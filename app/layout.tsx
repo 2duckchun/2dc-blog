@@ -1,4 +1,4 @@
-import './globals.css'
+import '../src/style/globals.css'
 import type { Metadata } from 'next'
 import { pretendard } from '@/lib/font'
 
