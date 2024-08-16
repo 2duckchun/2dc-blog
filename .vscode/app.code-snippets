@@ -2,16 +2,16 @@
   "Next Component": {
     "prefix": "fc",
     "body": [
-      "import { FunctionComponent } from 'react'",
+      "import  { FunctionComponent, HTMLAttributes } from 'react'",
       "import { cn } from '@/lib/utils'",
       "",
-      "interface ${TM_FILENAME_BASE}Props extends React.HTMLAttributes<HTMLDivElement> {",
-      " $1",
+      "interface ${TM_FILENAME_BASE/([a-z]*)-*([a-z]*)/${1:/capitalize}${2:/capitalize}/g}Props extends HTMLAttributes<HTMLDivElement> {",
       "}",
       "",
-      "export const ${TM_FILENAME_BASE}: FunctionComponent<${TM_FILENAME_BASE}Props> = ({className, ...props}) => {",
-      "  return <div className={cn(className)} {...props}>${TM_FILENAME_BASE}</div>",
-      "}"
+      "export const ${TM_FILENAME_BASE/([a-z]*)-*([a-z]*)/${1:/capitalize}${2:/capitalize}/g}: FunctionComponent<${TM_FILENAME_BASE/([a-z]*)-*([a-z]*)/${1:/capitalize}${2:/capitalize}/g}Props> = ({className, ...props}): JSX.Element => {",
+      "  return <div className={cn(className)} {...props}>${TM_FILENAME_BASE/([a-z]*)-*([a-z]*)/${1:/capitalize}${2:/capitalize}/g}</div>",
+      "}",
+      ""
     ],
     "description": "Typescript React Function Component"
   },
@@ -19,8 +19,8 @@
   "Next Layout": {
     "prefix": "layout",
     "body": [
-      "import { FunctionComponent, PropsWithChildren } from 'react'",
       "import type { Metadata } from 'next'",
+      "import { FunctionComponent, PropsWithChildren } from 'react'",
       "",
       "export const metadata: Metadata = {",
       " title: 'Create Next App',",
@@ -46,7 +46,7 @@
       "interface $1${TM_FILENAME_BASE/(.*)/${1:/capitalize}/g}Props {}",
       "",
       "const $1${TM_FILENAME_BASE/(.*)/${1:/capitalize}/g}: FunctionComponent<$1${TM_FILENAME_BASE/(.*)/${1:/capitalize}/g}Props> = ({$3}) => {",
-      "  return <main>$1${TM_FILENAME_BASE/(.*)/${1:/capitalize}/g}</main>",
+      "  return <section>$1${TM_FILENAME_BASE/(.*)/${1:/capitalize}/g}</section>",
       "}",
       "",
       "export default $1${TM_FILENAME_BASE/(.*)/${1:/capitalize}/g}"
