@@ -2,6 +2,7 @@
 
 import { FunctionComponent, useState } from 'react'
 import { Menu } from 'lucide-react'
+import Link from 'next/link'
 import { cn } from '@/lib/utils'
 
 interface HeaderProps extends React.HTMLAttributes<HTMLDivElement> {}
@@ -49,7 +50,11 @@ const DesktopHeader = () => {
 }
 
 const HeadingLogo = () => {
-  return <h1 className="text-xl font-bold xl:text-2xl">2DC TECH</h1>
+  return (
+    <Link href={'/'}>
+      <h1 className="text-xl font-bold xl:text-2xl">2DC BLOG</h1>
+    </Link>
+  )
 }
 
 const TopNavigationMenu = ({ className }: { className?: string }) => {
