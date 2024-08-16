@@ -1,10 +1,14 @@
 {
   "root": true,
   "plugins": ["import", "unused-imports"],
-  "extends": ["next/core-web-vitals", "plugin:tailwindcss/recommended", "prettier"],
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:tailwindcss/recommended",
+    "prettier"
+  ],
   "rules": {
     "no-var": "error",
-    "no-console": "warn",
+    // "no-console": "warn",
     "eqeqeq": "error",
     "unused-imports/no-unused-imports": "warn",
     "import/order": [
