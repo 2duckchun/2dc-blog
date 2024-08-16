@@ -9,10 +9,10 @@ export class MarkDownModule {
   private directoryPath: string
   constructor(directoryPath: string | string[]) {
     if (Array.isArray(directoryPath)) {
-      this.directoryPath = path.join(process.cwd(), 'content', ...directoryPath)
+      this.directoryPath = path.join(process.cwd(), ...directoryPath)
       return
     }
-    this.directoryPath = path.join(process.cwd(), 'content', directoryPath)
+    this.directoryPath = path.join(process.cwd(), directoryPath)
   }
 
   async getMarkdownFile(filename: string) {
