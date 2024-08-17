@@ -17,22 +17,20 @@ export const PostTocRemoteController = forwardRef(
       <div
         ref={ref}
         id="draggable"
-        className="left-3/4 top-[100px] z-10 hidden bg-slate-400 lg:fixed lg:block"
+        className="left-3/4 top-[100px] z-10 hidden overflow-hidden rounded-md shadow-md lg:fixed lg:block"
       >
-        <div id="draggable-header" className="z-20 cursor-move bg-blue-500 p-5">
+        <div
+          id="draggable-header"
+          className="z-20 cursor-move border-b-2 bg-slate-300 px-5 py-4"
+        >
           Click here to move
         </div>
-        <ul className="list-none">
+        <ul className="list-none px-4">
           {tocList.map((item, idx) => {
             if (item.nodeName === 'H1')
               return (
                 <Link href={`#${item.id}`} key={item.id}>
-                  <li
-                    className={cn(
-                      highlightText === item.title && 'text-red-500'
-                    )}
-                    key={item.title}
-                  >
+                  <li className={cn('text-lg font-semibold')} key={item.title}>
                     {item.title}
                   </li>
                 </Link>
