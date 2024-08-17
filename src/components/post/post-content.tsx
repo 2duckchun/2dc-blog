@@ -21,7 +21,11 @@ export const PostContent: FunctionComponent<PostContentProps> = ({
   const { highlightText } = useTocHighlightObserver(contentRef)
 
   return (
-    <div ref={contentRef} className={cn('prose m-auto', className)} {...props}>
+    <div
+      ref={contentRef}
+      className={cn('prose m-auto py-4', className)}
+      {...props}
+    >
       <PostTocRemoteController
         ref={draggableRef}
         highlightText={highlightText}
