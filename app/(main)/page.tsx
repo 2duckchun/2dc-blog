@@ -1,4 +1,4 @@
-import { PostCard } from '@/components/post-card'
+import { PostCard } from '@/components/post/post-card'
 import { MarkDownModule } from '@/modules/mark-down-module'
 
 const CONTENT_PATH_LIST = ['content', 'post']

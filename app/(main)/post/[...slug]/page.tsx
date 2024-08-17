@@ -1,4 +1,4 @@
-import { PostContent } from '@/components/post-content'
+import { PostContent } from '@/components/post/post-content'
 import { customCompileMdx } from '@/mdx/custom-compile-mdx'
 import { MarkDownModule } from '@/modules/mark-down-module'
 
