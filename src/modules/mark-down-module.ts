@@ -24,22 +24,28 @@ export class MarkDownModule {
     return MDFiles
   }
 
-  parseMarkdownGrayMatter(postPath: string): MarkDownMatter | undefined {
+  parseMarkdownFrontMatter(postPath: string): MarkDownMatter | undefined {
     try {
+      const fileName = this.extractFileName(postPath)
       const file = fs.readFileSync(postPath, { encoding: 'utf-8' })
-      const { data: grayMatter } = matter(file)
-      return { ...grayMatter } as MarkDownMatter
+      const { data: frontMatter } = matter(file)
+      return { ...frontMatter, fileName } as MarkDownMatter
     } catch (error) {
       console.error(error)
     }
   }
 
-  getGrayMatterList() {
+  getFrontMatterList() {
     const postPaths: string[] = sync(`${this.directoryPath}/**/*.md`)
     return postPaths.reduce<MarkDownMatter[]>((acc, cur) => {
-      const post = this.parseMarkdownGrayMatter(cur)
+      const post = this.parseMarkdownFrontMatter(cur)
       if (!post) return acc
       return [...acc, post]
     }, [])
+  }
+
+  extractFileName(path: string) {
+    const match = path.match(/\/([^\/]+)\.md$/)
+    return match ? match[1] : null
   }
 }
