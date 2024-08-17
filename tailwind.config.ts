@@ -75,7 +75,7 @@ const config = {
           css: {
             //...
             'h1,h2,h3,h4': {
-              'scroll-margin-top': spacing[28]
+              'scroll-margin-top': spacing[20]
             }
           }
         }
