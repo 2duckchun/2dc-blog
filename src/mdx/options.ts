@@ -1,4 +1,3 @@
-import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypePrism from 'rehype-prism-plus'
 import rehypeSlug from 'rehype-slug'
 import remarkGfm from 'remark-gfm'
@@ -10,15 +9,15 @@ export const options = {
     remarkPlugins: [remarkToc, remarkGfm],
     rehypePlugins: [
       rehypePrism as any,
-      rehypeSlug,
-      [
-        rehypeAutolinkHeadings,
-        {
-          properties: {
-            className: ['anchor']
-          }
-        }
-      ]
+      rehypeSlug
+      // [
+      //   rehypeAutolinkHeadings,
+      //   {
+      //     properties: {
+      //       className: ['anchor']
+      //     }
+      //   }
+      // ]
     ]
   }
 }
