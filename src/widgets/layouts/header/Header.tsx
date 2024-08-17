@@ -59,9 +59,9 @@ const HeadingLogo = () => {
 
 const TopNavigationMenu = ({ className }: { className?: string }) => {
   return (
-    <ul className={cn('flex min-w-[500px] justify-evenly group:', className)}>
+    <ul className={cn('flex min-w-[300px] justify-evenly group:', className)}>
       <li className="w-full text-center">POST</li>
-      <li className="w-full text-center">ABOUT ME</li>
+      <li className="w-full text-center">TAGS</li>
       <li className="w-full text-center">github</li>
     </ul>
   )
