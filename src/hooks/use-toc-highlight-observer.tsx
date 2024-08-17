@@ -8,7 +8,7 @@ const options = {
 export const useTocHighlightObserver = (
   contentRef: RefObject<HTMLDivElement>
 ) => {
-  const [highlightText, setHighlightText] = useState<string>()
+  const [highlightText, setHighlightText] = useState<string>('')
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
