@@ -1,4 +1,5 @@
 import { FunctionComponent } from 'react'
+import { PostBadge } from '@/components/post/post-badge'
 import { MarkDownModule } from '@/modules/mark-down-module'
 
 interface TagsPageProps {}
@@ -15,13 +16,14 @@ const TagsPage: FunctionComponent<TagsPageProps> = ({}) => {
     <main className="m-auto flex min-h-screen max-w-screen-xl flex-col gap-5 p-2 md:p-24">
       <div>
         <h2 className="text-xl font-semibold">TAGS</h2>
-        <div>
+        <div className="flex gap-3">
           {parsedTags.map((items) => {
             return (
-              <div className="px-2" key={items[0]}>
-                <span>{items[0]}</span>
-                <span>{items[1].count}</span>
-              </div>
+              <PostBadge
+                key={items[0]}
+                title={items[0]}
+                count={items[1].count}
+              />
             )
           })}
         </div>
