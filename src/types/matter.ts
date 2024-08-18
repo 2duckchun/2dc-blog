@@ -5,5 +5,5 @@ export type MarkDownMatter = {
   tags: string[]
   draft: boolean
   created_date: Date
-  fileName: string
+  fileName: string | string[]
 }
