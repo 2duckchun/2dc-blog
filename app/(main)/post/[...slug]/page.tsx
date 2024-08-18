@@ -5,7 +5,7 @@ import { MarkDownModule } from '@/modules/mark-down-module'
 interface PostPageProps {
   params: { slug: string[] }
 }
-const CONTENT_PATH_LIST = ['content', 'post']
+const CONTENT_PATH_LIST = ['post']
 
 const PostPage = async ({ params: { slug } }: PostPageProps) => {
   const markdownModule = new MarkDownModule(CONTENT_PATH_LIST)
@@ -14,7 +14,7 @@ const PostPage = async ({ params: { slug } }: PostPageProps) => {
     sourse: rawMarkDown
   })
   return (
-    <section className="p-4 px-8">
+    <section className="min-h-screen p-4 px-8">
       <PostContent>{content}</PostContent>
     </section>
   )

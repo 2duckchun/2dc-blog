@@ -9,7 +9,9 @@ export default function MainLayout({
     <>
       <Header />
       {children}
-      <footer>FOOTER</footer>
+      <footer className="mt-[125px] flex h-[200px] items-center justify-center bg-slate-700 text-center text-white">
+        Made by 2duckchun
+      </footer>
     </>
   )
 }
