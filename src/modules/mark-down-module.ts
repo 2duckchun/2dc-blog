@@ -4,6 +4,7 @@ import path from 'path'
 import { sync } from 'glob'
 import matter from 'gray-matter'
 import { MarkDownMatter } from '@/types/matter'
+import { TagsDetailPost } from '@/types/tags'
 
 export class MarkDownModule {
   private directoryPath: string
@@ -66,12 +67,13 @@ export class MarkDownModule {
 
   getTagsWithFrontMatterList() {
     const postPaths: string[] = sync(`${this.directoryPath}/**/*.md`)
-    const tagMap = new Map()
+    const tagMap = new Map<string, TagsDetailPost>()
     const reducedData = postPaths.reduce<MarkDownMatter[]>((acc, cur) => {
       const post = this.newParseMarkdownFrontMatter(cur)
       if (!post) return acc
       return [...acc, post]
     }, [])
+
     tagMap.set('all', {
       count: reducedData.length,
       frontMatter: [...reducedData]
@@ -79,20 +81,30 @@ export class MarkDownModule {
 
     reducedData.forEach((items) => {
       items.tags.forEach((tag) => {
-        if (!tagMap.has(tag)) {
-          tagMap.set(tag, {
-            count: 1,
-            frontMatter: [{ ...items }]
-          })
-        } else {
-          tagMap.set(tag, {
-            count: tagMap.get(tag).count + 1,
-            frontMatter: [...tagMap.get(tag).frontMatter, { ...items }]
-          })
+        const existringTagData = tagMap.get(tag) || {
+          count: 0,
+          frontMatter: []
         }
+        tagMap.set(tag, {
+          count: existringTagData.count + 1,
+          frontMatter: [...existringTagData.frontMatter, { ...items }]
+        })
       })
     })
     return tagMap
+
+    // 구 코드
+    // if (tagMap.has(tag)) {
+    //   tagMap.set(tag, {
+    //     count: tagMap.get(tag).count + 1,
+    //     frontMatter: [...tagMap.get(tag).frontMatter, { ...items }]
+    //   })
+    // } else {
+    //   tagMap.set(tag, {
+    //     count: 1,
+    //     frontMatter: [{ ...items }]
+    //   })
+    // }
   }
 
   extractFileName(path: string) {
