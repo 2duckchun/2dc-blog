@@ -1,32 +1,27 @@
 import { FunctionComponent } from 'react'
-import { PostBadge } from '@/components/post/post-badge'
+import { TagBadgeList } from '@/components/tags/container/tag-badge-list'
+import { TagContentPerTabs } from '@/components/tags/tag-content-per-tabs'
 import { MarkDownModule } from '@/modules/mark-down-module'
+import { TagsContextProvider } from '@/providers/tags-provider'
 
 interface TagsPageProps {}
 
 const TagsPage: FunctionComponent<TagsPageProps> = ({}) => {
   const postModule = new MarkDownModule('')
-  const postFrontMatter = postModule.newGetFrontMatterList()
   const tags = postModule.getTagsWithFrontMatterList()
   const parsedTags = Array.from(tags)
-  parsedTags.forEach((items) => {
-    console.log(items)
-  })
+  console.log(parsedTags)
+
   return (
     <main className="m-auto flex min-h-screen max-w-screen-xl flex-col gap-5 p-2 md:p-24">
       <div>
         <h2 className="text-xl font-semibold">TAGS</h2>
-        <div className="flex gap-3">
-          {parsedTags.map((items) => {
-            return (
-              <PostBadge
-                key={items[0]}
-                title={items[0]}
-                count={items[1].count}
-              />
-            )
-          })}
-        </div>
+        <TagsContextProvider taglist={parsedTags}>
+          <TagBadgeList />
+          <div>
+            <TagContentPerTabs />
+          </div>
+        </TagsContextProvider>
       </div>
     </main>
   )
