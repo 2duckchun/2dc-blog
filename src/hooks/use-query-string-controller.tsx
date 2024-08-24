@@ -24,7 +24,13 @@ export const useQueryStringController = () => {
     router.push(`${pathname}${query}`)
   }
 
+  const getQueryString = (tag: string) => {
+    const data = searchParams.get(tag)
+    return data
+  }
+
   return {
-    setQuertString
+    setQuertString,
+    getQueryString
   }
 }
