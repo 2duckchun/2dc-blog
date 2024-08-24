@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
 import { MarkDownMatter } from '@/types/matter'
+import { TagBadge } from '../tags/tag-badge'
 import {
   Card,
   CardContent,
@@ -11,7 +12,6 @@ import {
   CardHeader,
   CardTitle
 } from '../ui/card'
-import { PostBadge } from './post-badge'
 
 interface PostCardProps extends HTMLAttributes<HTMLDivElement> {
   frontmatter: MarkDownMatter
@@ -60,7 +60,7 @@ export const PostCard: FunctionComponent<PostCardProps> = ({
             <div>{frontmatter.description}</div>
             <div className="flex flex-wrap gap-1 pt-5">
               {frontmatter.tags.map((item, index) => {
-                return <PostBadge key={item} title={item} />
+                return <TagBadge key={item} title={item} />
               })}
             </div>
           </CardContent>

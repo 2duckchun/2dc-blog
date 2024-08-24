@@ -5,12 +5,12 @@ import { useQueryStringController } from '@/hooks/use-query-string-controller'
 import { cn } from '@/lib/utils'
 import { Badge } from '../ui/badge'
 
-interface PostBadgeProps extends HTMLAttributes<HTMLDivElement> {
+interface TagBadgeProps extends HTMLAttributes<HTMLDivElement> {
   title: string
   count?: number
 }
 
-export const PostBadge: FunctionComponent<PostBadgeProps> = ({
+export const TagBadge: FunctionComponent<TagBadgeProps> = ({
   className,
   title,
   count,
