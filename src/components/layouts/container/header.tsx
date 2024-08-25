@@ -3,6 +3,7 @@
 import { FunctionComponent, useState } from 'react'
 import { Menu } from 'lucide-react'
 import Link from 'next/link'
+import { TopNavigationMenu } from '@/components/layouts/top-navigation-menu'
 import { cn } from '@/lib/utils'
 
 interface HeaderProps extends React.HTMLAttributes<HTMLDivElement> {}
@@ -57,18 +58,23 @@ const HeadingLogo = () => {
   )
 }
 
-const TopNavigationMenu = ({ className }: { className?: string }) => {
-  return (
-    <ul
-      className={cn(
-        'flex min-w-[300px] justify-evenly gap-1 group:',
-        className
-      )}
-    >
-      <li className="text-center">POST</li>
-      <li className="text-center">SNIPPETS</li>
-      <li className="text-center">TAGS</li>
-      <li className="text-center">GITHUB</li>
-    </ul>
-  )
-}
+// const TopNavigationMenu = ({ className }: { className?: string }) => {
+//   return (
+//     <ul
+//       className={cn(
+//         'flex min-w-[300px] justify-evenly gap-1 group:',
+//         className
+//       )}
+//     >
+//       <Link
+//         href={'/'}
+//         className="relative before:absolute before:bottom-0 before:left-0 before:h-[2px] before:w-0 before:bg-black before:transition-all before:content-[''] hover:before:w-full"
+//       >
+//         <li className="text-center">POST</li>
+//       </Link>
+//       <li className="text-center">SNIPPETS</li>
+//       <li className="text-center">TAGS</li>
+//       <li className="text-center">GITHUB</li>
+//     </ul>
+//   )
+// }
