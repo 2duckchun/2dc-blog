@@ -18,7 +18,7 @@ export const useTocHighlightObserver = (
       })
     }, options)
     if (contentRef.current) {
-      const nodelist = contentRef.current.querySelectorAll('h1, h2, h3')
+      const nodelist = contentRef.current.querySelectorAll('h2, h3')
       nodelist.forEach((toc) => observer.observe(toc))
     }
     return () => observer.disconnect()
