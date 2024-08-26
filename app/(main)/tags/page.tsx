@@ -13,13 +13,11 @@ const TagsPage: FunctionComponent<TagsPageProps> = ({}) => {
 
   return (
     <main className="m-auto flex min-h-screen max-w-screen-xl flex-col gap-5 p-2 md:p-24">
-      <div>
-        <h2 className="text-xl font-semibold">TAGS</h2>
-        <TagsContextProvider taglist={parsedTags}>
-          <TagBadgeList className="my-5" />
-          <TagContentPerTabsContainer />
-        </TagsContextProvider>
-      </div>
+      <h2 className="text-xl font-semibold">TAGS</h2>
+      <TagsContextProvider taglist={parsedTags}>
+        <TagBadgeList className="my-5" />
+        <TagContentPerTabsContainer />
+      </TagsContextProvider>
     </main>
   )
 }

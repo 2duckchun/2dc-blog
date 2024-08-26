@@ -1,7 +1,7 @@
 'use client'
 
 import { Fragment, FunctionComponent, HTMLAttributes } from 'react'
-import { PostCard } from '@/components/post/post-card'
+import { PostFrontMatterList } from '@/components/post/container/post-front-matter-list'
 import { useQueryStringController } from '@/hooks/use-query-string-controller'
 import { cn } from '@/lib/utils'
 import { useTagsContext } from '@/providers/tags-provider'
@@ -21,9 +21,7 @@ export const TagContentPerTabsContainer: FunctionComponent<
           if (currentTag === item[0]) {
             return (
               <Fragment key={item[0]}>
-                {item[1].frontMatter.map((frontmatter) => (
-                  <PostCard frontmatter={frontmatter} key={frontmatter.title} />
-                ))}
+                <PostFrontMatterList list={item[1].frontMatter} />
               </Fragment>
             )
           }

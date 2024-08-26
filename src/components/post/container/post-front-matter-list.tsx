@@ -12,7 +12,7 @@ export const PostFrontMatterList: FunctionComponent<
 > = ({ className, list, ...props }): JSX.Element => {
   return (
     <section
-      className={cn('m-auto flex w-full flex-col gap-3', className)}
+      className={cn('m-auto flex w-full flex-col gap-5', className)}
       {...props}
     >
       {list.map((item, index) => {
