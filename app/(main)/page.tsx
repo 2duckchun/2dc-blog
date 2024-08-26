@@ -7,7 +7,7 @@ export default async function Home() {
   const frontMatterList = markdown.newGetFrontMatterList()
 
   return (
-    <main className="m-auto flex min-h-screen max-w-screen-xl flex-col items-center p-2">
+    <main className="m-auto flex min-h-screen max-w-screen-xl flex-col items-center gap-5 p-2">
       <IntroduceContainer />
       <PostFrontMatterList list={frontMatterList} />
     </main>
