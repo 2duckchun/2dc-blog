@@ -9,7 +9,7 @@ export default function MainLayout({
     <>
       <Header />
       {children}
-      <footer className="mt-[125px] flex h-[200px] items-center justify-center border-t-2 text-center text-black">
+      <footer className="mt-[125px] flex min-h-[100px] items-center justify-center border-t-2 text-center text-black">
         Made by 2duckchun
       </footer>
     </>
