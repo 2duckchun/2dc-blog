@@ -1,5 +1,6 @@
 'use client'
 
+import { Search } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { APP_PATH } from '@/constants/app-path'
@@ -32,15 +33,13 @@ const TOP_NAVIGATION_LIST = [
 export const TopNavigationMenu = ({ className }: TopNavigationMenuProps) => {
   const currentPath = usePathname()
   return (
-    <ul
-      className={cn(
-        'flex min-w-[300px] justify-evenly gap-1 group:',
-        className
-      )}
-    >
+    <ul className={cn('flex min-w-[350px] justify-evenly gap-1', className)}>
       {TOP_NAVIGATION_LIST.map((items) => (
         <LinkComponent key={items.title} currentPath={currentPath} {...items} />
       ))}
+      <li className="flex items-center justify-center">
+        <Search className="cursor-pointer" />
+      </li>
     </ul>
   )
 }
@@ -60,14 +59,17 @@ const LinkComponent = ({
     <Link
       href={path}
       target={newTab ? '_blank' : '_self'}
-      className={cn(
-        currentPath === path
-          ? 'border-b-2 border-black'
-          : 'before:absolute before:bottom-0 before:left-0 before:h-[2px] before:w-0 before:bg-black before:transition-all',
-        "relative before:content-[''] hover:before:w-full"
-      )}
+      className={cn('relative group')}
     >
       <li className="text-center">{title}</li>
+      <div
+        className={cn(
+          'absolute left-[50%] bottom-0 -translate-x-[50%] h-[2px] z-50',
+          currentPath === path
+            ? 'bg-black w-[90%] '
+            : 'transition-all w-0 group-hover:w-[90%] bg-black'
+        )}
+      ></div>
     </Link>
   )
 }
