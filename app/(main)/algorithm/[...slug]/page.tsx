@@ -5,7 +5,7 @@ import { MarkDownModule } from '@/modules/mark-down-module'
 interface AlgorithmPostPageProps {
   params: { slug: string[] }
 }
-const CONTENT_PATH_LIST = ['post']
+const CONTENT_PATH_LIST = ['algorithm']
 
 const AlgorithmPostPage = async ({
   params: { slug }
