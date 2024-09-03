@@ -57,24 +57,3 @@ const HeadingLogo = () => {
     </Link>
   )
 }
-
-// const TopNavigationMenu = ({ className }: { className?: string }) => {
-//   return (
-//     <ul
-//       className={cn(
-//         'flex min-w-[300px] justify-evenly gap-1 group:',
-//         className
-//       )}
-//     >
-//       <Link
-//         href={'/'}
-//         className="relative before:absolute before:bottom-0 before:left-0 before:h-[2px] before:w-0 before:bg-black before:transition-all before:content-[''] hover:before:w-full"
-//       >
-//         <li className="text-center">POST</li>
-//       </Link>
-//       <li className="text-center">SNIPPETS</li>
-//       <li className="text-center">TAGS</li>
-//       <li className="text-center">GITHUB</li>
-//     </ul>
-//   )
-// }
