@@ -1,6 +1,6 @@
 'use client'
 
-import { FunctionComponent, HTMLAttributes } from 'react'
+import { FunctionComponent, HTMLAttributes, Suspense } from 'react'
 import { cn } from '@/lib/utils'
 import { useTagsContext } from '@/providers/tags-provider'
 import { TagBadge } from '../tag-badge'
@@ -17,7 +17,9 @@ export const TagBadgeList: FunctionComponent<TagBadgeListProps> = ({
     <div className={cn('flex gap-3', className)}>
       {taglist.map((items) => {
         return (
-          <TagBadge key={items[0]} title={items[0]} count={items[1].count} />
+          <Suspense key={items[0]}>
+            <TagBadge title={items[0]} count={items[1].count} />
+          </Suspense>
         )
       })}
     </div>

@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react'
+import { FunctionComponent, Suspense } from 'react'
 import { TagBadgeList } from '@/components/tags/container/tag-badge-list'
 import { TagContentPerTabsContainer } from '@/components/tags/container/tag-content-per-tabs-container'
 import { MarkDownModule } from '@/modules/mark-down-module'
@@ -16,7 +16,9 @@ const TagsPage: FunctionComponent<TagsPageProps> = ({}) => {
       <h2 className="text-xl font-semibold">TAGS</h2>
       <TagsContextProvider taglist={parsedTags}>
         <TagBadgeList className="my-5" />
-        <TagContentPerTabsContainer />
+        <Suspense>
+          <TagContentPerTabsContainer />
+        </Suspense>
       </TagsContextProvider>
     </main>
   )

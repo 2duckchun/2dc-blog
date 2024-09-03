@@ -1,4 +1,4 @@
-import { FunctionComponent, HTMLAttributes } from 'react'
+import { FunctionComponent, HTMLAttributes, Suspense } from 'react'
 import dayjs from 'dayjs'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -59,8 +59,12 @@ export const PostCard: FunctionComponent<PostCardProps> = ({
           <CardContent className="w-full">
             <div>{frontmatter.description}</div>
             <div className="flex flex-wrap gap-1 pt-5">
-              {frontmatter.tags.map((item, index) => {
-                return <TagBadge key={item} title={item} />
+              {frontmatter.tags.map((item) => {
+                return (
+                  <Suspense key={item}>
+                    <TagBadge title={item} />
+                  </Suspense>
+                )
               })}
             </div>
           </CardContent>

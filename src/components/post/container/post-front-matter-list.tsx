@@ -1,4 +1,4 @@
-import { FunctionComponent, HTMLAttributes } from 'react'
+import { FunctionComponent, HTMLAttributes, Suspense } from 'react'
 import { cn } from '@/lib/utils'
 import { MarkDownMatter } from '@/types/matter'
 import { PostCard } from '../post-card'
@@ -16,7 +16,11 @@ export const PostFrontMatterList: FunctionComponent<
       {...props}
     >
       {list.map((item, index) => {
-        return <PostCard key={item.title} frontmatter={item} />
+        return (
+          <Suspense key={item.title}>
+            <PostCard frontmatter={item} />
+          </Suspense>
+        )
       })}
     </section>
   )
