@@ -1,6 +1,7 @@
 'use client'
 
 import { FunctionComponent, HTMLAttributes, ReactNode } from 'react'
+import { Button } from '../ui/button'
 import {
   Dialog,
   DialogClose,
@@ -11,6 +12,7 @@ import {
   DialogTitle,
   DialogTrigger
 } from '../ui/dialog'
+import { Input } from '../ui/input'
 
 interface SearchModalProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode
@@ -24,17 +26,21 @@ export const SearchModal: FunctionComponent<SearchModalProps> = ({
   return (
     <Dialog>
       <DialogTrigger asChild>{children}</DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="max-w-[90%] rounded-md md:max-w-[800px]">
         <DialogHeader>
-          <DialogTitle>Edit profile</DialogTitle>
+          <DialogTitle>게시글 검색</DialogTitle>
           <DialogDescription>
-            Make changes to your profile here. Click save when youre done.
+            제목 또는 태그명으로 검색해주세요.
           </DialogDescription>
         </DialogHeader>
-        <div className="grid gap-4 py-4"></div>
+        <div className="grid gap-4 py-4">
+          <Input />
+        </div>
         <DialogFooter>
           <DialogClose asChild>
-            <button type="button">Close</button>
+            <Button type="button" variant={'ghost'}>
+              닫기
+            </Button>
           </DialogClose>
         </DialogFooter>
       </DialogContent>
