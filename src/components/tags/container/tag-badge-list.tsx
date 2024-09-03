@@ -14,7 +14,7 @@ export const TagBadgeList: FunctionComponent<TagBadgeListProps> = ({
   const taglist = useTagsContext()
 
   return (
-    <div className={cn('flex gap-3', className)}>
+    <div className={cn('flex gap-3 flex-wrap', className)}>
       {taglist.map((items) => {
         return (
           <Suspense key={items[0]}>
