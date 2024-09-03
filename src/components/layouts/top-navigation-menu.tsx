@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { APP_PATH } from '@/constants/app-path'
 import { cn } from '@/lib/utils'
+import { SearchModal } from '../modal/search-modal'
 
 interface TopNavigationMenuProps {
   className?: string
@@ -38,7 +39,9 @@ export const TopNavigationMenu = ({ className }: TopNavigationMenuProps) => {
         <LinkComponent key={items.title} currentPath={currentPath} {...items} />
       ))}
       <li className="flex items-center justify-center">
-        <Search className="cursor-pointer" />
+        <SearchModal>
+          <Search className="cursor-pointer" />
+        </SearchModal>
       </li>
     </ul>
   )
