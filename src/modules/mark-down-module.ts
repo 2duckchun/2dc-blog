@@ -27,18 +27,7 @@ export class MarkDownModule {
 
   parseMarkdownFrontMatter(postPath: string): MarkDownMatter | undefined {
     try {
-      const fileName = this.extractFileName(postPath)
-      const file = fs.readFileSync(postPath, { encoding: 'utf-8' })
-      const { data: frontMatter } = matter(file)
-      return { ...frontMatter, fileName } as MarkDownMatter
-    } catch (error) {
-      console.error(error)
-    }
-  }
-
-  newParseMarkdownFrontMatter(postPath: string): MarkDownMatter | undefined {
-    try {
-      const [path1, path2] = this.newExtractFileName(postPath)
+      const [path1, path2] = this.extractFileName(postPath)
       const file = fs.readFileSync(postPath, { encoding: 'utf-8' })
       const { data: frontMatter } = matter(file)
       return { ...frontMatter, fileName: [path1, path2] } as MarkDownMatter
@@ -56,20 +45,11 @@ export class MarkDownModule {
     }, [])
   }
 
-  newGetFrontMatterList() {
-    const postPaths: string[] = sync(`${this.directoryPath}/**/*.md`)
-    return postPaths.reduce<MarkDownMatter[]>((acc, cur) => {
-      const post = this.newParseMarkdownFrontMatter(cur)
-      if (!post) return acc
-      return [...acc, post]
-    }, [])
-  }
-
   getTagsWithFrontMatterList() {
     const postPaths: string[] = sync(`${this.directoryPath}/**/*.md`)
     const tagMap = new Map<string, TagsDetailPost>()
     const reducedData = postPaths.reduce<MarkDownMatter[]>((acc, cur) => {
-      const post = this.newParseMarkdownFrontMatter(cur)
+      const post = this.parseMarkdownFrontMatter(cur)
       if (!post) return acc
       return [...acc, post]
     }, [])
@@ -108,11 +88,6 @@ export class MarkDownModule {
   }
 
   extractFileName(path: string) {
-    const match = path.match(/\/([^\/]+)\.md$/)
-    return match ? match[1] : null
-  }
-
-  newExtractFileName(path: string) {
     const regex = /\/([^/]+)\/([^/]+)\.md$/
     const match = path.match(regex)
     if (match) {

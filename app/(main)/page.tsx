@@ -4,7 +4,7 @@ import { MarkDownModule } from '@/modules/mark-down-module'
 
 export default async function Home() {
   const markdown = new MarkDownModule('')
-  const frontMatterList = markdown.newGetFrontMatterList()
+  const frontMatterList = markdown.getFrontMatterList()
 
   return (
     <main className="m-auto flex min-h-screen max-w-screen-xl flex-col items-center gap-5 p-2">
