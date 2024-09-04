@@ -3,7 +3,7 @@ import dayjs from 'dayjs'
 import Image from 'next/image'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
-import { MarkDownMatter } from '@/types/matter'
+import { MarkDownFrontMatter } from '@/types/matter'
 import { TagBadge } from '../tags/tag-badge'
 import {
   Card,
@@ -14,10 +14,10 @@ import {
 } from '../ui/card'
 
 interface PostCardProps extends HTMLAttributes<HTMLDivElement> {
-  frontmatter: MarkDownMatter
+  frontmatter: MarkDownFrontMatter
 }
 
-const parseFilePath = (fileName: MarkDownMatter['fileName']) => {
+const parseFilePath = (fileName: MarkDownFrontMatter['fileName']) => {
   if (Array.isArray(fileName)) {
     return fileName.join('/')
   }

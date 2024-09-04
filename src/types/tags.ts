@@ -1,8 +1,8 @@
-import { MarkDownMatter } from './matter'
+import { MarkDownFrontMatter } from './matter'
 
 export type TagsDetailPost = {
   count: number
-  frontMatter: MarkDownMatter[]
+  frontMatter: MarkDownFrontMatter[]
 }
 
 export type TagsData = [string, TagsDetailPost]

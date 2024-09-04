@@ -3,7 +3,7 @@ import fsPromise from 'fs/promises'
 import path from 'path'
 import { sync } from 'glob'
 import matter from 'gray-matter'
-import { MarkDownMatter } from '@/types/matter'
+import { MarkDownFrontMatter } from '@/types/matter'
 import { TagsDetailPost } from '@/types/tags'
 
 export class MarkDownModule {
@@ -25,12 +25,12 @@ export class MarkDownModule {
     return MDFiles
   }
 
-  parseMarkdownFrontMatter(postPath: string): MarkDownMatter | undefined {
+  parseMarkdownFrontMatter(postPath: string): MarkDownFrontMatter | undefined {
     try {
       const [path1, path2] = this.extractFileName(postPath)
       const file = fs.readFileSync(postPath, { encoding: 'utf-8' })
       const { data: frontMatter } = matter(file)
-      return { ...frontMatter, fileName: [path1, path2] } as MarkDownMatter
+      return { ...frontMatter, fileName: [path1, path2] } as MarkDownFrontMatter
     } catch (error) {
       console.error(error)
     }
@@ -38,7 +38,7 @@ export class MarkDownModule {
 
   getFrontMatterList() {
     const postPaths: string[] = sync(`${this.directoryPath}/**/*.md`)
-    return postPaths.reduce<MarkDownMatter[]>((acc, cur) => {
+    return postPaths.reduce<MarkDownFrontMatter[]>((acc, cur) => {
       const post = this.parseMarkdownFrontMatter(cur)
       if (!post) return acc
       return [...acc, post]
@@ -48,7 +48,7 @@ export class MarkDownModule {
   getTagsWithFrontMatterList() {
     const postPaths: string[] = sync(`${this.directoryPath}/**/*.md`)
     const tagMap = new Map<string, TagsDetailPost>()
-    const reducedData = postPaths.reduce<MarkDownMatter[]>((acc, cur) => {
+    const reducedData = postPaths.reduce<MarkDownFrontMatter[]>((acc, cur) => {
       const post = this.parseMarkdownFrontMatter(cur)
       if (!post) return acc
       return [...acc, post]

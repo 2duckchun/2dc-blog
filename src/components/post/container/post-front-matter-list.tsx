@@ -1,10 +1,10 @@
 import { FunctionComponent, HTMLAttributes, Suspense } from 'react'
 import { cn } from '@/lib/utils'
-import { MarkDownMatter } from '@/types/matter'
+import { MarkDownFrontMatter } from '@/types/matter'
 import { PostCard } from '../post-card'
 
 interface PostFrontMatterListProps extends HTMLAttributes<HTMLDivElement> {
-  list: MarkDownMatter[]
+  list: MarkDownFrontMatter[]
 }
 
 export const PostFrontMatterList: FunctionComponent<
