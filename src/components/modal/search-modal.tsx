@@ -1,7 +1,10 @@
 'use client'
 
-import { FunctionComponent, HTMLAttributes, ReactNode } from 'react'
+import { FunctionComponent, HTMLAttributes, ReactNode, useState } from 'react'
+import { getSearchedFrontMatterTitle } from '@/api/search'
+import { MarkDownFrontMatter } from '@/types/matter'
 import { Button } from '../ui/button'
+import { DebouncedInput } from '../ui/debounced-input'
 import {
   Dialog,
   DialogClose,
@@ -12,7 +15,6 @@ import {
   DialogTitle,
   DialogTrigger
 } from '../ui/dialog'
-import { Input } from '../ui/input'
 
 interface SearchModalProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode
@@ -23,22 +25,49 @@ export const SearchModal: FunctionComponent<SearchModalProps> = ({
   children,
   ...props
 }): JSX.Element => {
+  const [searchedFrontMatter, setSearchedFrontMatter] = useState<
+    MarkDownFrontMatter[]
+  >([])
+
+  const resetSearchFrontMatter = () => {
+    setSearchedFrontMatter([])
+  }
+
+  const onDebounceHandler = async (value: string | number) => {
+    const data = await getSearchedFrontMatterTitle(String(value))
+    setSearchedFrontMatter(data)
+  }
+
   return (
     <Dialog>
       <DialogTrigger asChild>{children}</DialogTrigger>
-      <DialogContent className="max-w-[90%] rounded-md md:max-w-[800px]">
+      <DialogContent
+        className="max-w-[90%] rounded-md md:max-w-[800px]"
+        onCloseHandler={resetSearchFrontMatter}
+      >
         <DialogHeader>
           <DialogTitle>게시글 검색</DialogTitle>
-          <DialogDescription>
-            제목 또는 태그명으로 검색해주세요.
-          </DialogDescription>
+          <DialogDescription>포스트의 제목을 검색해주세요.</DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
-          <Input />
+          <DebouncedInput
+            value={''}
+            onDebounceHandler={onDebounceHandler}
+            debounce={200}
+          />
+          <div>
+            {searchedFrontMatter.map((data, index) => {
+              return <div key={data.title}>{data.title}</div>
+            })}
+          </div>
         </div>
         <DialogFooter>
           <DialogClose asChild>
-            <Button type="button" variant={'ghost'}>
+            <Button
+              onClick={resetSearchFrontMatter}
+              type="button"
+              variant={'ghost'}
+            >
               닫기
             </Button>
           </DialogClose>
