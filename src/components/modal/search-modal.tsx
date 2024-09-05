@@ -1,9 +1,26 @@
 'use client'
 
-import { FunctionComponent, HTMLAttributes, ReactNode, useState } from 'react'
+import {
+  FunctionComponent,
+  HTMLAttributes,
+  ReactNode,
+  Suspense,
+  useState
+} from 'react'
+import dayjs from 'dayjs'
+import Link from 'next/link'
 import { getSearchedFrontMatterTitle } from '@/api/search'
+import { cn, parseFilePath } from '@/lib/utils'
 import { MarkDownFrontMatter } from '@/types/matter'
+import { TagBadge } from '../tags/tag-badge'
 import { Button } from '../ui/button'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle
+} from '../ui/card'
 import { DebouncedInput } from '../ui/debounced-input'
 import {
   Dialog,
@@ -46,20 +63,18 @@ export const SearchModal: FunctionComponent<SearchModalProps> = ({
         onCloseHandler={resetSearchFrontMatter}
       >
         <DialogHeader>
-          <DialogTitle>게시글 검색</DialogTitle>
+          <DialogTitle>포스트 검색</DialogTitle>
           <DialogDescription>포스트의 제목을 검색해주세요.</DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
+          {/* 검색 Input */}
           <DebouncedInput
             value={''}
             onDebounceHandler={onDebounceHandler}
             debounce={200}
           />
-          <div>
-            {searchedFrontMatter.map((data, index) => {
-              return <div key={data.title}>{data.title}</div>
-            })}
-          </div>
+          {/* 검색 품목 리스트렌더링 */}
+          <SearchedPostList searchedFrontMatter={searchedFrontMatter} />
         </div>
         <DialogFooter>
           <DialogClose asChild>
@@ -74,5 +89,54 @@ export const SearchModal: FunctionComponent<SearchModalProps> = ({
         </DialogFooter>
       </DialogContent>
     </Dialog>
+  )
+}
+
+const SearchedPostList = ({
+  searchedFrontMatter,
+  className
+}: {
+  searchedFrontMatter: MarkDownFrontMatter[]
+  className?: string
+}) => {
+  return (
+    <div className="flex flex-col gap-3">
+      {searchedFrontMatter.map((item, index) => {
+        const CREATED_TIME = dayjs(item.created_date).format('YYYY년 MM월 DD일')
+        return (
+          <Link
+            key={item.title}
+            className="w-full"
+            href={`/${parseFilePath(item.fileName)}`}
+          >
+            <Card
+              key={item.title}
+              className={cn(
+                'w-full flex cursor-pointer transition hover:outline hover:translate-x-4',
+                className
+              )}
+            >
+              <div className="w-full">
+                <CardHeader className="justify-between md:flex-row">
+                  <CardTitle className="text-lg">{item.title}</CardTitle>
+                  <CardDescription>{CREATED_TIME}</CardDescription>
+                </CardHeader>
+                <CardContent className="w-full">
+                  <div className="flex flex-wrap justify-end gap-1 pt-1">
+                    {item.tags.map((item) => {
+                      return (
+                        <Suspense key={item}>
+                          <TagBadge title={item} />
+                        </Suspense>
+                      )
+                    })}
+                  </div>
+                </CardContent>
+              </div>
+            </Card>
+          </Link>
+        )
+      })}
+    </div>
   )
 }
