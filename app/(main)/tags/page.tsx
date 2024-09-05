@@ -1,8 +1,14 @@
+import { Metadata } from 'next'
 import { FunctionComponent, Suspense } from 'react'
 import { TagBadgeList } from '@/components/tags/container/tag-badge-list'
 import { TagContentPerTabsContainer } from '@/components/tags/container/tag-content-per-tabs-container'
 import { MarkDownModule } from '@/modules/mark-down-module'
 import { TagsContextProvider } from '@/providers/tags-provider'
+
+export const metadata: Metadata = {
+  title: `TAGS`,
+  description: '태그를 이용해 원하는 포스트를 선택하실 수 있습니다.'
+}
 
 interface TagsPageProps {}
 
