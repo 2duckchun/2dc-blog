@@ -21,9 +21,9 @@ const PostPage = async ({ params: { slug } }: PostPageProps) => {
     sourse: rawMarkDown
   })
   return (
-    <section className="min-h-screen p-4 px-8">
+    <main className="min-h-screen p-4 px-8">
       <PostContent>{content}</PostContent>
-    </section>
+    </main>
   )
 }
 
