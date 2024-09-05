@@ -28,7 +28,7 @@ export const TagBadge: FunctionComponent<TagBadgeProps> = ({
         })
       }
     >
-      <span className="text-base">{title}</span>
+      <span className="text-xs md:text-base">{title}</span>
       {count !== undefined && <span className="ml-2">{count}</span>}
     </Badge>
   )
