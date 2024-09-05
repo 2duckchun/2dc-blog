@@ -38,11 +38,19 @@ export class MarkDownModule {
 
   getFrontMatterList() {
     const postPaths: string[] = sync(`${this.directoryPath}/**/*.md`)
-    return postPaths.reduce<MarkDownFrontMatter[]>((acc, cur) => {
-      const post = this.parseMarkdownFrontMatter(cur)
-      if (!post) return acc
-      return [...acc, post]
-    }, [])
+    const frontMatterList = postPaths
+      .reduce<MarkDownFrontMatter[]>((acc, cur) => {
+        const post = this.parseMarkdownFrontMatter(cur)
+        if (!post) return acc
+        return [...acc, post]
+      }, [])
+      .sort(
+        (a, b) =>
+          // Date값은 타입적으로 가감이 불가능하여 Number로 형변환을 시도함.
+          Number(new Date(b.created_date)) - Number(new Date(a.created_date))
+      )
+
+    return [...frontMatterList]
   }
 
   getTagsWithFrontMatterList() {
