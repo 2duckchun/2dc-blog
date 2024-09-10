@@ -18,7 +18,7 @@ export const PostContent: FunctionComponent<PostContentProps> = ({
 }): JSX.Element => {
   const draggableRef = useDragElement()
   const { contentRef, tocList } = useGetTocAllNodeList('h1, h2, h3')
-  const { highlightText } = useTocHighlightObserver(contentRef)
+  const { higtlightTextObject } = useTocHighlightObserver(contentRef)
 
   return (
     <div
@@ -28,7 +28,7 @@ export const PostContent: FunctionComponent<PostContentProps> = ({
     >
       <PostTocRemoteController
         ref={draggableRef}
-        highlightText={highlightText}
+        higtlightTextObject={higtlightTextObject}
         tocList={tocList}
       />
       {children}

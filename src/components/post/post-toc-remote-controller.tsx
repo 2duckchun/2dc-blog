@@ -4,13 +4,13 @@ import { cn } from '@/lib/utils'
 import { TocData } from '@/types/post'
 
 interface PostTocRemoteControllerProps extends HTMLAttributes<HTMLDivElement> {
-  highlightText: string
+  higtlightTextObject: Record<string, any>
   tocList: TocData[]
 }
 
 export const PostTocRemoteController = forwardRef(
   (
-    { highlightText, tocList }: PostTocRemoteControllerProps,
+    { higtlightTextObject, tocList }: PostTocRemoteControllerProps,
     ref: React.ForwardedRef<HTMLDivElement>
   ) => {
     return (
@@ -26,44 +26,13 @@ export const PostTocRemoteController = forwardRef(
           Click here to move
         </div>
         <ul className="list-none px-4">
-          {tocList.map((item, idx) => {
-            if (item.nodeName === 'H1')
-              return (
-                <Link href={`#${item.id}`} key={item.id}>
-                  <li className={cn('text-lg font-semibold')} key={item.title}>
-                    {item.title}
-                  </li>
-                </Link>
-              )
-            if (item.nodeName === 'H2')
-              return (
-                <Link href={`#${item.id}`} key={item.id}>
-                  <li
-                    className={cn(
-                      'pl-3',
-                      highlightText === item.title && 'text-red-500'
-                    )}
-                    key={item.title}
-                  >
-                    {item.title}
-                  </li>
-                </Link>
-              )
-            if (item.nodeName === 'H3')
-              return (
-                <Link href={`#${item.id}`} key={item.id}>
-                  <li
-                    className={cn(
-                      'pl-5',
-                      highlightText === item.title && 'text-red-500'
-                    )}
-                    key={item.title}
-                  >
-                    {item.title}
-                  </li>
-                </Link>
-              )
-          })}
+          {tocList.map((item) => (
+            <TocListItem
+              key={item.title}
+              higtlightTextObject={higtlightTextObject}
+              tocData={item}
+            />
+          ))}
         </ul>
       </div>
     )
@@ -71,3 +40,28 @@ export const PostTocRemoteController = forwardRef(
 )
 
 PostTocRemoteController.displayName = 'PostTocRemoteController'
+
+const TocListItem = ({
+  tocData,
+  higtlightTextObject
+}: {
+  tocData: TocData
+  higtlightTextObject: Record<string, any>
+}) => {
+  const data = higtlightTextObject.current[tocData.title]
+
+  const styles =
+    tocData.nodeName === 'H1'
+      ? 'text-lg font-semibold'
+      : tocData.nodeName === 'H2'
+        ? 'pl-3'
+        : 'pl-5'
+
+  return (
+    <Link href={`#${tocData.id}`} key={tocData.id}>
+      <li className={cn(styles, data && 'text-blue-700')} key={tocData.title}>
+        {tocData.title}
+      </li>
+    </Link>
+  )
+}
