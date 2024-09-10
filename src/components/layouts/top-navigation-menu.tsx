@@ -16,10 +16,10 @@ const TOP_NAVIGATION_LIST = [
     title: 'POST',
     path: APP_PATH.POST()
   },
-  {
-    title: 'SNIPPETS',
-    path: APP_PATH.SNIPPETS()
-  },
+  // {
+  //   title: 'SNIPPETS',
+  //   path: APP_PATH.SNIPPETS()
+  // },
   {
     title: 'TAGS',
     path: APP_PATH.TAGS()
