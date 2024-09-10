@@ -42,6 +42,7 @@ export class MarkDownModule {
       .reduce<MarkDownFrontMatter[]>((acc, cur) => {
         const post = this.parseMarkdownFrontMatter(cur)
         if (!post) return acc
+        if (post.draft === true) return acc
         return [...acc, post]
       }, [])
       .sort(
@@ -59,6 +60,7 @@ export class MarkDownModule {
     const reducedData = postPaths.reduce<MarkDownFrontMatter[]>((acc, cur) => {
       const post = this.parseMarkdownFrontMatter(cur)
       if (!post) return acc
+      if (post.draft === true) return acc
       return [...acc, post]
     }, [])
 
