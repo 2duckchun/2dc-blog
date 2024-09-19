@@ -10,6 +10,10 @@ export const metadata: Metadata = {
       'naver-site-verification': '5da2532700825226e569779beb872ba677c13472',
       'google-site-verification': 'b3fTGYsUtZnvAfwHJri3JPJC5h1Chn_vGLdfPuCAb9g'
     }
+  },
+  openGraph: {
+    images: `/images/profile.png`,
+    description: '2DC의 개인 블로그'
   }
 }
 
