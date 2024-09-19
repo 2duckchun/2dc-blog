@@ -109,6 +109,16 @@ const config = {
             //...
             'h1,h2,h3,h4': {
               'scroll-margin-top': spacing[20]
+            },
+            code: {
+              color: '#e33f47',
+              'font-weight': '500'
+            },
+            'code::before': {
+              content: '""'
+            },
+            'code::after': {
+              content: '""'
             }
           }
         }

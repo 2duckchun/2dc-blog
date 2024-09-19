@@ -1,21 +1,68 @@
 ---
-title: '[스니펫] vscode 코드 스니펫 모음집'
-description: '제가 사용하고 있는 VSCODE 스니펫 모음입니다.'
+title: '[스니펫] vscode 스니펫 만들기 및 스니펫 공유'
+description: '스니펫을 만들어봅시다!'
 thumbnail: 'https://cdn.pixabay.com/photo/2018/07/25/19/00/field-3562040_1280.jpg'
-tags: ['vscode', '스니펫']
+tags: ['vscode', 'snippets']
 draft: false
 created_date: 2024-09-10 15:36:01
 ---
 
-# [스니펫] vscode 코드 스니펫 모음집
+# vscode 스니펫 만들기 및 스니펫 공유
 
-코드 스니펫은 반복되는 코드 패턴을 빠르게 입력할 수 있도록 미리 만들어놓은 템플릿입니다. 이러한 스니펫을 적절히 사용하면 보일러 플레이트 입력같은 반복 작업을 손쉽고 빠르게 끝낼 수 있지요. vscode를 이용하시는 개발자시라면 에디터에서 제공하는 자동완성 기능을 한번쯤은 사용해보신 경험이 있으실 텐데요. 정확히는 그것들을 스니펫이라고 할 수가 있습니다. vscode에서 제공하는 빌트인 스니펫을 사용했던 것이지요.
+코드 스니펫은 반복되는 코드 패턴을 빠르게 입력할 수 있는 템플릿입니다. 스니펫을 적절히 사용하면 보일러 플레이트 입력 등의 반복 작업을 빠르고 손쉽게 끝낼 수 있습니다.
 
-vscode는 빌트인 스니펫 외에도 직접 본인의 스니펫을 만들어 사용할 수 있습니다. 자세한 내용은 [vscode 공식문서 유저 가이드 중 snippets 부분](https://code.visualstudio.com/docs/editor/userdefinedsnippets)을 정독하시면 됩니다. 게시글에서는 제가 현재 사용하고 있는 next.js 보일러 플레이트 전용 스니펫을 공유하고자 합니다.
+<img width="536" alt="image" src="https://github.com/user-attachments/assets/421aa65e-c757-4e64-b551-e4e6e51fd860" />
 
-## 사용중인 커스텀 코드 스니펫
+vscode를 이용하시는 개발자라면 위 사진과 같은 에디터에서 제공하는 자동완성 기능을 사용해보신 경험이 있으실 겁니다. 이 자동완성 기능의 정확한 명칭이 `스니펫` 인데요. vscode에서 기본적으로 제공해주는 스니펫을 `빌트인 스니펫` 이라고 합니다. 사실 우리는 늘 스니펫을 사용하고 있었습니다.
 
-### page, function component, layout 스니펫 (Next.js 전용)
+빌트인 스니펫이 있다면 사용자 지정 스니펫도 있을 것 같지요? 네! 그렇습니다. vscode는 빌트인 스니펫 외에도 직접 본인의 스니펫을 만들어 사용할 수 있도록 가이드를 제공합니다. 사용자 지정 스니펫 생성에 대한 자세한 내용은 **[vscode 공식문서 유저 가이드 중 snippets 부분(클릭하시면 해당 링크로 이동합니다.)](https://code.visualstudio.com/docs/editor/userdefinedsnippets)** 을 확인하시면 되는데요. 다루는 내용이 상당히 방대하지만 그만큼 다양한 기능을 제공하기 때문에 한번 훑어볼만한 가치가 있습니다.
+
+## 초간단 스니펫 만들기
+
+그럼 간단한 방법으로 나만의 스니펫을 만들어볼까요? 먼저 프로젝트의 메인 디렉토리에 **`.vscode` 디렉토리**를 만들어주시고, **`app.code-snippets` 파일**을 추가로 만들어주세요.
+
+<img width="313" alt="image" src="https://github.com/user-attachments/assets/f0fe6b81-6b8e-4d6d-b2b9-21c837500584" />
+
+그리고 `app.code-snippets` 파일 내부에 아래 소스코드를 붙여넣기 해봅시다.
+
+```tsx
+// app.code-snippets
+{
+  "Hello Snippets!": {
+    "prefix": ["hello", "hello-snippets"],
+    "body": [
+      "import fs from 'fs'",
+      "",
+      "// 현재년 : ${CURRENT_YEAR}",
+      "// 현재월 : ${CURRENT_MONTH}",
+      "// 파일명 : ${TM_FILENAME}",
+      "// 현재 클립보드 : ${CLIPBOARD}",
+    ],
+    "description": "스니펫을 처음 만들어보았습니다!",
+  },
+}
+```
+
+- `"Hello Snippets!"` 은 스니펫의 이름입니다.
+- `prefix`는 스니펫을 표시하는 하나 이상의 **트리거 단어**를 정의합니다. `prefix`에 대해 하위 문자열 일치가 수행됩니다. 가령 "fc"는 "for-const"와 일치할 수 있습니다.
+- `body`는 하나 또는 그 이상의 컨텐츠 라인이며, 삽입 시 여러 줄로 연결됩니다. 위의 코드는 빈 줄 포함 총 6줄이 됩니다.
+- `description`은 스니펫을 설명하는 문구이며, 스니펫 사용 시 vscode에 의해 보여질 수 있습니다. 반드시 입력할 필요는 없습니다. (선택사항)
+
+완성이 되었다면 아래와 같이 사용해봅시다!
+
+<img width="517" alt="image" src="https://github.com/user-attachments/assets/ecb1c27a-c8f8-4958-8f99-4342842f715b" />
+
+<img width="450" alt="image" src="https://github.com/user-attachments/assets/fbc49aac-81c2-4460-8384-9329247b0b69" />
+
+너무 쉽지요?
+
+## 사용중인 커스텀 코드 스니펫 공유
+
+이제 제가 사용중인 커스텀 코드 스니펫을 공유드리도록 하겠습니다. 저는 아래 스니펫을 사용할 때마다 각 프로젝트에 맞게 조금씩 커스터마이징을 해서 사용을 하고 있습니다. 따라서 이 스니펫을 그냥 복붙해서 사용하시면 적절치 못할 가능성이 높습니다. 일단 코드를 가져가시되, 약간 커스터마이징해서 사용하시면 될 것 같습니다. 그리 어렵지 않습니다.
+
+### Next.js 전용 스니펫
+
+Next.js의 컴포넌트, 페이지, 레이아웃을 빠르게 만들 수 있는 코드 스니펫입니다. :)
 
 ```json
 {
@@ -76,9 +123,9 @@ vscode는 빌트인 스니펫 외에도 직접 본인의 스니펫을 만들어 
 }
 ```
 
-원하는 파일에서 `fc`, `page`, `layout`을 입력하고 자동완성 기능을 사용하시면 위 스니펫을 통해 보일러 플레이트 코드가 한번에 작성됩니다. 참으로 편리합니다.
+### 마크다운 스니펫
 
-### markdown matter 스니펫
+블로그 작성에 사용할 마크다운의 프론트매터를 빠르고 정확하게 만들기 위해 작성한 코드 스니펫입니다.
 
 ```json
 {
@@ -111,4 +158,7 @@ vscode는 빌트인 스니펫 외에도 직접 본인의 스니펫을 만들어 
 }
 ```
 
-마크다운 프론트메터 보일러플레이트를 입력하는 코드 스니펫입니다. 단순 글자 외에도 날짜와 같은 특수한 정보도 스니펫으로 입력할 수가 있습니다. 이와 같은 기능은 위 코드의 `created_date`를 확인해보시고, 공식문서를 대조해서 체크해보시기 바랍니다.
+## 참고자료
+
+1. https://bepyan.github.io/blog/nextjs-blog
+2. https://code.visualstudio.com/docs/editor/userdefinedsnippets
