@@ -4,7 +4,6 @@ import { FunctionComponent, useEffect, useRef } from 'react'
 import { cn } from '@/lib/utils'
 
 interface testProps extends React.HTMLAttributes<HTMLDivElement> {
-  //   children: ReactElement<any, string | JSXElementConstructor<any>>
   children: React.ReactNode
 }
 
