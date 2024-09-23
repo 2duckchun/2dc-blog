@@ -25,7 +25,7 @@ export const PostTocRemoteController = forwardRef(
         >
           Click here to move
         </div>
-        <ul className="list-none px-4">
+        <ul className="flex list-none flex-col gap-2 px-4 py-3">
           {tocList.map((item) => (
             <TocListItem
               key={item.title}
