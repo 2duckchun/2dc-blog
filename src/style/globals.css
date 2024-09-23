@@ -90,6 +90,6 @@
   content: '# ';
 }
 
-.prose a {
+/* .prose a {
   @apply no-underline;
-}
+} */
