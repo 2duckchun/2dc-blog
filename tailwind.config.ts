@@ -119,6 +119,10 @@ const config = {
             },
             'code::after': {
               content: '""'
+            },
+            a: {
+              color: '#0000FF',
+              'text-decoration': 'underline'
             }
           }
         }
