@@ -19,6 +19,14 @@ export const customCompileMdx = async ({ sourse }: { sourse: string }) => {
             <h1>{children}</h1>
           </div>
         )
+      },
+      Hint: ({ children, id }) => {
+        return (
+          <div className="my-5 rounded-l-md border-l-4 border-l-blue-700 bg-blue-400/20 py-1 pl-3 text-main">
+            <span className="block pb-1 font-semibold text-blue-600">HINT</span>
+            {children}
+          </div>
+        )
       }
     }
   })
