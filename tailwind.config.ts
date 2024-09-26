@@ -15,6 +15,11 @@ const config = {
       }
     },
     extend: {
+      textColor: {
+        main: 'hsl(var(--text))',
+        label: 'hsl(var(--label))',
+        disabled: 'hsl(var(--disabled))'
+      },
       height: {
         header: 'var(--header)'
       },
