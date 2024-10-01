@@ -55,7 +55,7 @@ const TocListItem = ({
       ? 'text-lg font-semibold'
       : tocData.nodeName === 'H2'
         ? 'pl-3'
-        : 'pl-5'
+        : `pl-5 before:content-['-'] before:pr-2`
 
   return (
     <Link href={`#${tocData.id}`} key={tocData.id}>

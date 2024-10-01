@@ -29,7 +29,6 @@ export const customCompileMdx = async ({ sourse }: { sourse: string }) => {
         )
       },
       Description: ({ children, id, title }) => {
-        console.log(title)
         return (
           <div className="my-5 rounded-l-md border-l-4 border-l-teal-700 bg-teal-400/20 px-2 py-1 text-main">
             <span className="mt-3 block px-3 text-lg font-semibold text-teal-600">
