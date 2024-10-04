@@ -3,7 +3,7 @@ import { PostFrontMatterList } from '@/components/post/container/post-front-matt
 import { MarkDownModule } from '@/modules/mark-down-module'
 
 export default async function Home() {
-  const markdown = new MarkDownModule('')
+  const markdown = new MarkDownModule('post')
   const frontMatterList = markdown.getFrontMatterList()
 
   return (

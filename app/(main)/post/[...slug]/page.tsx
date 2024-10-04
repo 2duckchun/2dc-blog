@@ -1,4 +1,5 @@
 import { Metadata, ResolvingMetadata } from 'next'
+import { UtterancesComments } from '@/components/comment'
 import { PostContent } from '@/components/post/post-content'
 import { customCompileMdx } from '@/mdx/custom-compile-mdx'
 import { MarkDownModule } from '@/modules/mark-down-module'
@@ -39,6 +40,7 @@ const PostPage = async ({ params: { slug } }: PostPageProps) => {
   return (
     <main className="min-h-screen p-4 px-8">
       <PostContent>{content}</PostContent>
+      <UtterancesComments />
     </main>
   )
 }
