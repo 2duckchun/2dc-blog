@@ -39,11 +39,12 @@ export const CustomBadge: FunctionComponent<CustomBadgeProps> = ({
         'flex w-fit bg-white cursor-pointer items-center py-1 px-2 justify-center rounded-[15px] border-2 border-gray-200 aria-selected:border-r-gray-400 aria-selected:border-b-gray-400 aria-selected:font-semibold',
         className
       )}
-      onClick={() =>
+      onClick={(e) => {
+        e.preventDefault()
         setQuertString({
           tag: title
         })
-      }
+      }}
       {...props}
     >
       <span className="w-full whitespace-nowrap text-xs md:text-base">
