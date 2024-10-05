@@ -27,6 +27,7 @@ export async function generateMetadata(
   const { frontmatter } = await getPostData(slug[0])
   const previousImages = (await parent).openGraph?.images || []
   return {
+    metadataBase: new URL('https://blog.2duckchun.com'),
     title: frontmatter.title,
     description: frontmatter.description,
     openGraph: {
