@@ -31,7 +31,7 @@ export const PostCard: FunctionComponent<PostCardProps> = ({
       <Card
         key={frontmatter.title}
         className={cn(
-          'w-full p-3 flex cursor-pointer transition hover:outline hover:translate-x-4',
+          'w-full p-3 flex cursor-pointer transition hover:outline hover:scale-105',
           className
         )}
       >
