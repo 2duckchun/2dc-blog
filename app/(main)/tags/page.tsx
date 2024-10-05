@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import { FunctionComponent, Suspense } from 'react'
-import { CustomTagBadgeList } from '@/components/tags/container/custom-badge-list'
+import { TagBadgeList } from '@/components/tags/container/tag-badge-list'
 import { TagContentPerTabsContainer } from '@/components/tags/container/tag-content-per-tabs-container'
 import { MarkDownModule } from '@/modules/mark-down-module'
 import { TagsContextProvider } from '@/providers/tags-provider'
@@ -21,7 +21,7 @@ const TagsPage: FunctionComponent<TagsPageProps> = ({}) => {
     <main className="m-auto flex min-h-screen max-w-screen-xl flex-col gap-5 p-2 md:p-24">
       <h2 className="text-xl font-semibold">TAGS</h2>
       <TagsContextProvider taglist={parsedTags}>
-        <CustomTagBadgeList />
+        <TagBadgeList />
         <Suspense>
           <TagContentPerTabsContainer />
         </Suspense>

@@ -1,6 +1,6 @@
 import { Suspense } from 'react'
 import { IntroduceContainer } from '@/components/layouts/container/introduce-container'
-import { CustomTagBadgeList } from '@/components/tags/container/custom-badge-list'
+import { TagBadgeList } from '@/components/tags/container/tag-badge-list'
 import { TagContentPerTabsContainer } from '@/components/tags/container/tag-content-per-tabs-container'
 import { MarkDownModule } from '@/modules/mark-down-module'
 import { TagsContextProvider } from '@/providers/tags-provider'
@@ -22,7 +22,7 @@ const PostSortedTagContainer = () => {
     <section>
       <h2 className="text-lg font-semibold">TAGS</h2>
       <TagsContextProvider taglist={parsedTags}>
-        <CustomTagBadgeList />
+        <TagBadgeList />
         <Suspense>
           <TagContentPerTabsContainer />
         </Suspense>

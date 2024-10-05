@@ -34,6 +34,7 @@ export const TagBadge: FunctionComponent<TagBadgeProps> = ({
   return (
     <div
       ref={badgeRef}
+      role="tab"
       aria-selected={isSelected}
       className={cn(
         'flex w-fit bg-white cursor-pointer items-center py-1 px-2 justify-center rounded-[15px] border-2 border-gray-200 aria-selected:border-r-gray-400 aria-selected:border-b-gray-400 aria-selected:font-semibold',
