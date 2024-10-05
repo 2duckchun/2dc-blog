@@ -14,7 +14,13 @@ export const TagBadgeList: FunctionComponent<TagBadgeListProps> = ({
   const taglist = useTagsContext()
 
   return (
-    <div className={cn('flex gap-3 flex-wrap', className)}>
+    <div
+      role="tablist"
+      className={cn(
+        'flex items-center border-l-8 border-r-8 border-t-2 border-b-2 gap-2 overflow-x-auto my-1 py-2 px-3 bg-slate-50',
+        className
+      )}
+    >
       {taglist.map((items) => {
         return (
           <Suspense key={items[0]}>

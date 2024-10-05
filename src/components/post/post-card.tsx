@@ -51,7 +51,7 @@ export const PostCard: FunctionComponent<PostCardProps> = ({
           </CardHeader>
           <CardContent className="w-full">
             <div>{frontmatter.description}</div>
-            <div className="flex flex-wrap gap-1 pt-5">
+            <div role="tablist" className="flex flex-wrap gap-1 pt-5">
               {frontmatter.tags.map((item) => {
                 return (
                   <Suspense key={item}>
