@@ -31,7 +31,7 @@ export const PostCard: FunctionComponent<PostCardProps> = ({
       <Card
         key={frontmatter.title}
         className={cn(
-          'w-full p-3 flex cursor-pointer transition hover:outline hover:translate-x-4',
+          'w-full p-3 flex cursor-pointer transition hover:outline hover:scale-105',
           className
         )}
       >
@@ -51,7 +51,7 @@ export const PostCard: FunctionComponent<PostCardProps> = ({
           </CardHeader>
           <CardContent className="w-full">
             <div>{frontmatter.description}</div>
-            <div className="flex flex-wrap gap-1 pt-5">
+            <div role="tablist" className="flex flex-wrap gap-1 pt-5">
               {frontmatter.tags.map((item) => {
                 return (
                   <Suspense key={item}>

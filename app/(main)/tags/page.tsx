@@ -21,7 +21,7 @@ const TagsPage: FunctionComponent<TagsPageProps> = ({}) => {
     <main className="m-auto flex min-h-screen max-w-screen-xl flex-col gap-5 p-2 md:p-24">
       <h2 className="text-xl font-semibold">TAGS</h2>
       <TagsContextProvider taglist={parsedTags}>
-        <TagBadgeList className="my-5" />
+        <TagBadgeList />
         <Suspense>
           <TagContentPerTabsContainer />
         </Suspense>

@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { pretendard } from '@/lib/font'
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://blog.2duckchun.com'),
   title: `2DC - blog`,
   description: '2DC의 개인 블로그',
   verification: {

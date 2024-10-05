@@ -1,15 +1,32 @@
+import { Suspense } from 'react'
 import { IntroduceContainer } from '@/components/layouts/container/introduce-container'
-import { PostFrontMatterList } from '@/components/post/container/post-front-matter-list'
+import { TagBadgeList } from '@/components/tags/container/tag-badge-list'
+import { TagContentPerTabsContainer } from '@/components/tags/container/tag-content-per-tabs-container'
 import { MarkDownModule } from '@/modules/mark-down-module'
+import { TagsContextProvider } from '@/providers/tags-provider'
 
 export default async function Home() {
-  const markdown = new MarkDownModule('post')
-  const frontMatterList = markdown.getFrontMatterList()
-
   return (
-    <main className="m-auto flex min-h-screen max-w-screen-xl flex-col items-center gap-5 p-2">
+    <main className="m-auto flex min-h-screen max-w-screen-xl flex-col gap-5 p-2 md:p-24 md:py-6">
       <IntroduceContainer />
-      <PostFrontMatterList list={frontMatterList} />
+      <PostSortedTagContainer />
     </main>
+  )
+}
+
+const PostSortedTagContainer = () => {
+  const postModule = new MarkDownModule('')
+  const tags = postModule.getTagsWithFrontMatterList()
+  const parsedTags = Array.from(tags)
+  return (
+    <section>
+      <h2 className="text-lg font-semibold">TAGS</h2>
+      <TagsContextProvider taglist={parsedTags}>
+        <TagBadgeList />
+        <Suspense>
+          <TagContentPerTabsContainer />
+        </Suspense>
+      </TagsContextProvider>
+    </section>
   )
 }

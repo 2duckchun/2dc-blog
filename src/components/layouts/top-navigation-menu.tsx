@@ -20,10 +20,10 @@ const TOP_NAVIGATION_LIST = [
   //   title: 'SNIPPETS',
   //   path: APP_PATH.SNIPPETS()
   // },
-  {
-    title: 'TAGS',
-    path: APP_PATH.TAGS()
-  },
+  // {
+  //   title: 'TAGS',
+  //   path: APP_PATH.TAGS()
+  // },
   {
     title: 'GITHUB',
     path: APP_PATH.GITHUB(),
@@ -40,7 +40,7 @@ export const TopNavigationMenu = ({ className }: TopNavigationMenuProps) => {
       ))}
       <li className="flex items-center justify-center">
         <SearchModal>
-          <Search className="cursor-pointer" />
+          <Search role="button" className="cursor-pointer" />
         </SearchModal>
       </li>
     </ul>
@@ -59,20 +59,22 @@ const LinkComponent = ({
   newTab?: boolean
 }) => {
   return (
-    <Link
-      href={path}
-      target={newTab ? '_blank' : '_self'}
-      className={cn('relative group')}
-    >
-      <li className="text-center">{title}</li>
-      <div
-        className={cn(
-          'absolute left-[50%] bottom-0 -translate-x-[50%] h-[2px] z-50',
-          currentPath === path
-            ? 'bg-black w-[90%] '
-            : 'transition-all w-0 group-hover:w-[90%] bg-black'
-        )}
-      ></div>
-    </Link>
+    <li className="text-center">
+      <Link
+        href={path}
+        target={newTab ? '_blank' : '_self'}
+        className={cn('relative group')}
+      >
+        {title}
+        <div
+          className={cn(
+            'absolute left-[50%] bottom-0 -translate-x-[50%] h-[2px] z-50',
+            currentPath === path
+              ? 'bg-black w-[95%] '
+              : 'transition-all w-0 group-hover:w-[95%] bg-black'
+          )}
+        ></div>
+      </Link>
+    </li>
   )
 }

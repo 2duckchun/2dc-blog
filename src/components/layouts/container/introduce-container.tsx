@@ -12,7 +12,7 @@ export const IntroduceContainer: FunctionComponent<IntroduceContainerProps> = ({
   return (
     <section
       className={cn(
-        'w-[90%] my-10 flex flex-col md:flex-row items-center gap-5',
+        'w-[90%] my-5 flex flex-col md:flex-row items-center gap-5',
         className
       )}
       {...props}
