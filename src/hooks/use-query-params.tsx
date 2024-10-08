@@ -6,7 +6,7 @@ type UpdateTagObject = {
   [key: string]: string
 }
 
-export const useQueryStringController = () => {
+export const useQueryParams = () => {
   const router = useRouter()
   const searchParams = useSearchParams()
   const pathname = usePathname()
