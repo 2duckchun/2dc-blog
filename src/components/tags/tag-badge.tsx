@@ -7,7 +7,7 @@ import {
   useRef,
   useState
 } from 'react'
-import { useQueryStringController } from '@/hooks/use-query-string-controller'
+import { useQueryParams } from '@/hooks/use-query-params'
 import { cn } from '@/lib/utils'
 
 interface TagBadgeProps extends HTMLAttributes<HTMLDivElement> {
@@ -21,7 +21,7 @@ export const TagBadge: FunctionComponent<TagBadgeProps> = ({
   count,
   ...props
 }): JSX.Element => {
-  const { setQuertString, getQueryString } = useQueryStringController()
+  const { setQuertString, getQueryString } = useQueryParams()
   const [isSelected, setIsSelected] = useState<boolean>(false)
   const tagQueryString = getQueryString('tag')
   const badgeRef = useRef<HTMLDivElement>(null)

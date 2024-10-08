@@ -1,7 +1,7 @@
 'use client'
 
 import { FunctionComponent, HTMLAttributes } from 'react'
-import { useQueryStringController } from '@/hooks/use-query-string-controller'
+import { useQueryParams } from '@/hooks/use-query-params'
 import { cn } from '@/lib/utils'
 import { Badge } from '../ui/badge'
 
@@ -16,7 +16,7 @@ export const TagBadge: FunctionComponent<TagBadgeProps> = ({
   count,
   ...props
 }): JSX.Element => {
-  const { setQuertString } = useQueryStringController()
+  const { setQuertString } = useQueryParams()
 
   return (
     <Badge

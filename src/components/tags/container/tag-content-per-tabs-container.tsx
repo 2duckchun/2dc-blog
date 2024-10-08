@@ -2,7 +2,7 @@
 
 import { Fragment, FunctionComponent, HTMLAttributes } from 'react'
 import { PostFrontMatterList } from '@/components/post/container/post-front-matter-list'
-import { useQueryStringController } from '@/hooks/use-query-string-controller'
+import { useQueryParams } from '@/hooks/use-query-params'
 import { cn } from '@/lib/utils'
 import { useTagsContext } from '@/providers/tags-provider'
 
@@ -13,7 +13,7 @@ export const TagContentPerTabsContainer: FunctionComponent<
   TagContentPerTabsContainerProps
 > = ({ className, ...props }): JSX.Element => {
   const taglist = useTagsContext()
-  const currentTag = useQueryStringController().getQueryString('tag') ?? 'all'
+  const currentTag = useQueryParams().getQueryString('tag') ?? 'all'
   return (
     <div className={cn(className)} {...props}>
       <div className="m-auto flex w-full flex-col gap-3">
