@@ -2,7 +2,7 @@
 title: '[linux] 리눅스 디렉터리 표준(FHS)'
 description: '리눅스 디렉터리 표준에 대해 알아봅니다!'
 thumbnail: 'https://cdn.pixabay.com/photo/2013/07/12/15/30/penguin-149971_1280.png'
-tags: [linux, KNOU]
+tags: [os, KNOU]
 draft: false
 created_date: 2024-09-09 14:14:01
 ---

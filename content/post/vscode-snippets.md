@@ -2,7 +2,7 @@
 title: '[스니펫] vscode 스니펫 만들기 및 스니펫 공유'
 description: '스니펫을 만들어봅시다!'
 thumbnail: 'https://cdn.pixabay.com/photo/2018/07/25/19/00/field-3562040_1280.jpg'
-tags: ['vscode', 'snippets']
+tags: ['config']
 draft: false
 created_date: 2024-09-10 15:36:01
 ---

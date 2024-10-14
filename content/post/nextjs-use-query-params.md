@@ -2,7 +2,7 @@
 title: '[next.js] 쿼리스트링, URLSearchParams 학습 및 커스텀 훅 제작'
 description: '이 포스트에서는 쿼리스트링과 URLSearchParams에 대해 학습해본 후, 공부한 내용을 바탕으로 URLSearchParams를 쉽게 다루기 위한 커스텀 훅을 제작해봅니다.'
 thumbnail: '/images/nextjs.png'
-tags: [next.js, react]
+tags: [frontend]
 draft: false
 created_date: 2024-10-05 23:45:46
 ---

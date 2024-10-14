@@ -2,7 +2,7 @@
 title: '[nest.js] prisma, nest.js, supabase 연동'
 description: '어색한듯 어색하지 않은 이 조합. 한번 연동해봅시다.'
 thumbnail: '/images/nest.svg'
-tags: [nest.js, supabase, prisma]
+tags: [backend]
 draft: false
 created_date: 2024-09-20 12:29:38
 ---
