@@ -2,7 +2,7 @@
 title: '[자료구조] 스택의 추상 자료형 및 후위 연산식 활용'
 description: '가장 기초적인 자료구조인 스택을 조금 더 면밀히 공부해봅니다.'
 thumbnail: '/images/knou.svg'
-tags: [자료구조, CS, KNOU]
+tags: [data-structure, CS, KNOU]
 draft: false
 created_date: 2024-09-27 21:15:37
 ---

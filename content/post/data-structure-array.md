@@ -2,7 +2,7 @@
 title: '[자료구조] 배열의 추상 자료형 및 자바스크립트 배열'
 description: '방송통신대학교 수업을 듣던 중 자바스크립트의 배열 지식과 연결될만한 작은 부분을 찾아내서 포스팅합니다.'
 thumbnail: '/images/knou.svg'
-tags: [자료구조, CS, KNOU]
+tags: [data-structure, CS, KNOU]
 draft: false
 created_date: 2024-09-27 14:44:24
 ---

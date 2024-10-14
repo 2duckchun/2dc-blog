@@ -2,7 +2,7 @@
 title: '[nest.js] 순환 종속성(Circular Dependency) 공식문서 번역'
 description: '역시 공식문서를 잘 읽고 개발을 해야합니다. 모르고 개발하다가 몇 시간을 데였습니다.'
 thumbnail: '/images/nest.svg'
-tags: [nest.js, 공식문서]
+tags: [backend]
 draft: false
 created_date: 2024-09-26 22:41:00
 ---

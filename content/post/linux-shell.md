@@ -2,7 +2,7 @@
 title: '[linux] 셸 이해하기'
 description: '셸에 대해 더 알아봅니다.'
 thumbnail: 'https://cdn.pixabay.com/photo/2017/01/31/15/33/linux-2025130_1280.png'
-tags: [linux, KNOU]
+tags: [os, KNOU]
 draft: false
 created_date: 2024-10-05 00:01:24
 ---
