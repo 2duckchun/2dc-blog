@@ -127,6 +127,8 @@ const config = {
             },
             a: {
               color: '#0000FF',
+              display: 'block',
+              'word-break': 'break-all',
               'text-decoration': 'underline'
             }
           }

@@ -7,7 +7,7 @@ import { TagsContextProvider } from '@/providers/tags-provider'
 
 export default async function Home() {
   return (
-    <main className="m-auto flex min-h-screen max-w-screen-xl flex-col gap-5 p-2 md:p-24 md:py-6">
+    <main className="m-auto flex min-h-screen max-w-screen-xl flex-col gap-5 p-2 px-6 md:p-24 md:py-6">
       <IntroduceContainer />
       <PostSortedTagContainer />
     </main>
