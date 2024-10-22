@@ -14,13 +14,13 @@ created_date: 2024-10-22 18:39:00
 
 그림으로 한번 볼까요?
 
-- 그림
+- <img width="672" alt="image" src="https://github.com/user-attachments/assets/a1e082d8-28c4-4e89-b2b8-a15372baaf66" />
 
 배열은 동일한 데이터 타입의 element를 물리적인 메모리에 순차적으로 적재하는 모양을 띕니다.
 
 반면에 연결 리스트는 반드시 메모리에 순차적으로 적재되어 있지는 않습니다. 포인터에 의해 연결은 되어있으나 흩어져 있지요.
 
-- 그림
+- <img width="672" alt="image" src="https://github.com/user-attachments/assets/0fbcc8be-dd1a-4fd6-ae61-d4bae035c0de" />
 
 이러한 특성 탓에 배열과 연결 리스트는 각각의 장단점이 확실합니다.
 
@@ -92,7 +92,8 @@ class NodeItem<T> {
   data: T
   next: NodeItem<T> | null
   constructor(data: T) {
-    ;(this.data = data), (this.next = null)
+    this.data = data
+    this.next = null
   }
 }
 
