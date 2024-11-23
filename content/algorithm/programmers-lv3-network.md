@@ -1,5 +1,5 @@
 ---
-title: '[프로그래머스 lv.3] 타겟 넘버'
+title: '[프로그래머스 lv.3] 네트워크'
 description: 'DFS, BFS로 해결 가능한 문제입니다.'
 thumbnail: '/images/coding-test.webp'
 tags: ['PS', '프로그래머스']
