@@ -2,7 +2,7 @@
 title: '[프로그래머스 lv.2] 타겟 넘버'
 description: 'DFS, BFS 맛보기가 가능한 문제입니다.'
 thumbnail: '/images/coding-test.webp'
-tags: ['코딩테스트', '프로그래머스']
+tags: ['PS', '프로그래머스']
 draft: false
 created_date: 2024-11-13 00:34:39
 ---
