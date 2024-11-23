@@ -9,14 +9,14 @@ export const metadata: Metadata = {
 }
 
 interface AlgorithmPostPageProps {
-  params: { slug: string[] }
+  params: Promise<{ slug: string[] }>
 }
 
 const CONTENT_PATH_LIST = ['algorithm']
 
-const AlgorithmPostPage = async ({
-  params: { slug }
-}: AlgorithmPostPageProps) => {
+const AlgorithmPostPage = async ({ params }: AlgorithmPostPageProps) => {
+  const { slug } = await params
+
   const markdownModule = new MarkDownModule(CONTENT_PATH_LIST)
   const rawMarkDown = await markdownModule.getMarkdownFile(slug[0])
   const { content } = await customCompileMdx({

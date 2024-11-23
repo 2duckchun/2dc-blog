@@ -6,7 +6,7 @@ import { MarkDownModule } from '@/modules/mark-down-module'
 import { MarkDownFrontMatter } from '@/types/matter'
 
 interface PostPageProps {
-  params: { slug: string[] }
+  params: Promise<{ slug: string[] }>
 }
 
 const CONTENT_PATH_LIST = ['post']
@@ -21,9 +21,11 @@ const getPostData = async (slug: string) => {
 }
 
 export async function generateMetadata(
-  { params: { slug } }: PostPageProps,
+  { params }: PostPageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
+  const { slug } = await params
+
   const { frontmatter } = await getPostData(slug[0])
   const previousImages = (await parent).openGraph?.images || []
   return {
@@ -36,7 +38,8 @@ export async function generateMetadata(
   }
 }
 
-const PostPage = async ({ params: { slug } }: PostPageProps) => {
+const PostPage = async ({ params }: PostPageProps) => {
+  const { slug } = await params
   const { content } = await getPostData(slug[0])
   return (
     <main className="min-h-screen p-4 px-8">
