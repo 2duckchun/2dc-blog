@@ -39,7 +39,7 @@ export const PostCard: FunctionComponent<PostCardProps> = ({
           <Image
             src={frontmatter.thumbnail}
             width={250}
-            height={200}
+            height={100}
             className="rounded-lg"
             alt={frontmatter.title}
           />

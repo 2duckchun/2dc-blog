@@ -1,7 +1,7 @@
 ---
 title: '[프로그래머스 lv.1] 붕대감기'
 description: '조건이 많은 단순 구현 문제입니다.'
-thumbnail: '/images/coding-test.webp'
+thumbnail: '/images/programmers.jpg'
 tags: ['PS', '프로그래머스']
 draft: false
 created_date: 2024-11-13 00:20:05
