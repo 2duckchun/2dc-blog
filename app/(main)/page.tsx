@@ -15,7 +15,7 @@ export default async function Home() {
 }
 
 const PostSortedTagContainer = () => {
-  const postModule = new MarkDownModule('')
+  const postModule = new MarkDownModule('post')
   const tags = postModule.getTagsWithFrontMatterList()
   const parsedTags = Array.from(tags)
   return (
