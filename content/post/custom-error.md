@@ -2,7 +2,7 @@
 title: '[JS] 자바스크립트 에러 클래스와 커스텀 에러 만들기'
 description: '우리는 에러 클래스를 잘 쓰고 있었을까요? 무턱대고 new Error만 쓰지는 않았을까요? 이 게시글에서는 에러를 자유자재로 다룰 수 있도록 에러 클래스와 커스텀 에러 클래스에 대해 소개합니다.'
 thumbnail: '/images/javascript.svg'
-tags: [javascript, frontend, backend]
+tags: [javascript]
 draft: false
 created_date: 2024-09-28 22:42:15
 ---

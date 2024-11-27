@@ -2,7 +2,7 @@
 title: '[JS] 열거성(Enumerable)과 직렬화(Stringify) 연구'
 description: '객체의 프로퍼티가 비열거형(non-enumerable)이면 객체를 직렬화(JSON.stringify)했을 때 뭔가 뜻하는대로 동작하지 않습니다. 그런데 열거형은 뭘까요? 간단히 알아봅니다.'
 thumbnail: '/images/javascript.svg'
-tags: [javascript, frontend, backend]
+tags: [javascript]
 draft: false
 created_date: 2024-10-15 22:42:17
 ---
