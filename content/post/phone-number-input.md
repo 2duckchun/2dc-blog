@@ -1,6 +1,6 @@
 ---
 title: '[구현] PhoneNumberInput 만들기'
-description: '즐거운 확장 Input 컴포넌트 만들기 시간입니다.'
+description: '숫자를 입력하면 자동으로 휴대폰 번호 포맷으로 변환해주는 input 컴포넌트를 만들어봅니다.'
 thumbnail: '/images/react.png'
 tags: ['frontend', '구현']
 draft: false
@@ -9,16 +9,31 @@ created_date: 2025-01-02 21:07:01
 
 # PhoneNumberInput
 
-PhoneNumberInput 컴포넌트는 아래의 요구사항을 충족해야 한다고 가정하겠습니다.
+PhoneNumberInput은 사용자가 번호를 입력한 후 blur 상태가 되면 번호를 휴대폰 번호 포맷으로 자동 변환하는 input 확장 컴포넌트입니다. 이 컴포넌트는 다음과 같은 요구사항을 충족해야 합니다:
 
-1. 사용자는 **PhoneNumberInput** 에 숫자만 입력할 수 있다. (`onFocus` 상태에서는 Input에 숫자만 표현되고 입력되어야 한다.)
-2. `onBlur` 상태(포커싱을 잃은 상태)에서는 숫자들이 휴대폰 포맷에 맞게 변환되어 표현되어야 한다. `(ex) 010-1234-5678`
-3. `onBlur`, `onFocus` 상태에 따라 포맷이 1번, 2번과 같이 변할 수 있어야 한다.
-4. 상위 컴포넌트는 PhoneNumberInput을 일반적인 input처럼 Props를 전달할 수 있어야 한다.
+## 요구사항
+
+1. **숫자만 입력 가능**
+
+   - 사용자는 PhoneNumberInput에 숫자만 입력할 수 있습니다.
+   - onFocus 상태에서는 입력 필드에 숫자만 표시되며, 입력된 값도 숫자만 허용됩니다.
+
+2. **포맷 변환**
+
+   - 입력 필드가 onBlur 상태(포커스를 잃은 상태)가 되면, 입력된 숫자가 휴대폰 번호 포맷(ex: 010-1234-5678)에 맞게 변환되어 표시됩니다.
+
+3. **동적 포맷 변경**
+
+   - onFocus 상태에서는 입력 필드가 순수 숫자로 표시되고, onBlur 상태에서는 휴대폰 번호 포맷으로 변경되는 동작을 수행해야 합니다.
+
+4. **포맷 변환**
+
+   - 상위 컴포넌트는 PhoneNumberInput을 일반적인 input처럼 사용할 수 있어야 합니다.
+   - Props로 onChange, value 등을 그대로 전달할 수 있어야 하며, 기존 코드와의 호환성을 유지해야 합니다.
 
 ## 구현 코드
 
-코드를 공유하고, 해석을 이어가겠습니다.
+아래는 구현 코드입니다.
 
 ```tsx
 type InputProps = React.InputHTMLAttributes<HTMLInputElement>
@@ -96,7 +111,7 @@ export const PhoneNumberIndex = () => {
 
 ### 해석
 
-이 컴포넌트는 일반적인 input 태그를 확장 및 구체화한 것입니다. 따라서 컴포넌트의 인터페이스를 다음과 같이 구성할 수 있습니다.
+이 컴포넌트는 일반적인 input 태그를 휴대폰 번호 포맷 기능을 수행할 수 있도록 확장 및 구체화한 것입니다. 따라서 컴포넌트의 타입을 아래와 같이 구성할 수 있습니다.
 
 ```tsx
 type InputProps = React.InputHTMLAttributes<HTMLInputElement>
@@ -109,9 +124,9 @@ interface PhoneNumberInputProps
 }
 ```
 
-현재 컴포넌트는 React JSX 문법을 사용하므로 React의 InputHTMLAttributes를 사용하여 위와 같이 InputProps 타입을 만들었습니다.
+기본적으로 제공하는 input 엘리먼트를 확장하는 것 처럼 구현하기 위해 타입을 위와 같이 구성했습니다. React의 InputHTMLAttributes 제네릭을 활용하였으며, 이를 통해 해당 컴포넌트를 호출하는 상위 컴포넌트에서는 일반 input에 props를 전달하는 것 처럼 해당 컴포넌트를 사용할 수 있게 됩니다.
 
-중요한 것은 PhoneNumberInput은 일반적인 input을 확장한다는 것입니다. 따라서 해당 컴포넌트의 사용 방법 또한 일반 input을 사용하는 것과 크게 차이가 나면 안됩니다. 그러므로 `onChange`나 `onBlur` 등 구체화가 필요한 요소들은 상위 컴포넌트에서 props로 받되, 내부에서 핸들러로 한번 감싸서 필요한 기능을 구현해줄 필요가 있습니다.
+단 필요한 기능을 구현하기 위해 `onChange`나 `onBlur` 등 구체화가 필요한 요소들을 props로 받되, 해당 핸들러를 한번 감싸서 처리 해줄 필요가 있습니다.
 
 ```tsx
 export const PhoneNumberInput = ({
@@ -150,17 +165,24 @@ export const PhoneNumberInput = ({
 }
 ```
 
-이렇게 되면 상위 컴포넌트는 `onChange` 등의 이벤트 함수를 그대로 넘겨주는 형태가 됩니다. 하위 컴포넌트에서는 props로 전달받은 `onChange` 에 전반적인 처리를 한 값을 넘겨줄 수 있습니다.
-
 input 태그를 보시겠습니다.
 
-- `onChange`에는 handleOnChange가 연결되어 있습니다. handleOnChange는 `e.target.value`를 인자로 받아 숫자를 제외한 모든 문자를 제거하고, 그 값을 이용해 부모로부터 props로 전달받은 `onChange`를 호출합니다.
+1.  **`onChange` 이벤트**
 
-- `onFocus`에는 handleOnFocus가 연결되어있고, Focus시 실행이 필요한 코드를 호출합니다.
+    - onChange에는 handleOnChange 함수가 연결되어 있습니다.
+    - 이 함수는 e.target.value에서 숫자가 아닌 모든 문자를 제거한 값을 계산합니다. 처리된 값을 부모 컴포넌트로부터 전달받은 onChange 함수에 넘겨줍니다.
 
-- `onBlur`에는 handleOnBlur가 연결되어있고, Blur시 실행이 필요한 코드를 호출합니다.
+2.  **`onFocus` 이벤트**
 
-따라서 부모 컴포넌트는 PhoneNumberInput를 아래와 같이 이용할 수 있습니다.
+    - onFocus에는 handleOnFocus 함수가 연결되어 있습니다.
+    - 입력 필드에 포커스가 발생하면, 기존 value 값에서 숫자가 아닌 문자를 모두 제거한 값으로 변환해 부모의 onChange를 호출합니다.
+
+3.  **`onBlur` 이벤트**
+
+    - onBlur에는 handleOnBlur 함수가 연결되어 있습니다.
+    - 입력 필드에서 포커스가 해제되면, 현재 입력된 value 값을 formatPhoneNumber 함수로 처리해 포맷된 값으로 변환한 뒤 부모의 onChange를 호출합니다.
+
+아래는 컴포넌트 사용 예시입니다.
 
 ```tsx
 export const PhoneNumberIndex = () => {
@@ -173,9 +195,11 @@ export const PhoneNumberIndex = () => {
 }
 ```
 
-일반적인 input 태그가 사용하는 어트리뷰트인 onChange와 value를 props 이름으로 그대로 사용하였다는 점이 중요할 것 같습니다. PhoneNumberIndex 컴포넌트를 다른 input 컴포넌트로 바꾸더라도 부모 컴포넌트 입장에서는
-여전히 동일한 props를 내려줄 수 있기 떄문입니다. 이는 유지보수성이나 코드 가독성을 높일 수 있는 방법 중 하나입니다.
+PhoneNumberInput에서 **onChange**와 **value**를 일반적인 input 태그의 속성이자 props 이름으로 그대로 사용한 점이 핵심입니다.
 
-## 후기
+장점
+이 방식은 PhoneNumberIndex 컴포넌트를 다른 input 컴포넌트로 대체하더라도 동일한 onChange와 value를 사용할 수 있어 부모 컴포넌트 입장에서 수정 작업이 최소화됩니다. 결과적으로 유지보수성과 코드 가독성을 높이는 효과를 얻을 수 있습니다.
 
-어려울 것은 없는 구현이고, GPT가 잘 짜주는 코드이기도 합니다. 하지만 이런식으로 구현을 하는구나 정도는 이해하고 있어야 개발이 즐거운 것 같습니다. 즐겁네요.
+## 회고
+
+이번 구현은 특별히 어려운 부분이 없는 비교적 간단한 작업입니다. 물론 GPT 같은 도구로도 쉽게 구현 가능한 코드입니다. 하지만 이런 방식으로 컴포넌트를 설계하고 작동 방식을 이해하는 것이 중요합니다. 이해하고 나니 개발이 더욱 재미있어지네요. 개발을 즐기며 한 걸음씩 나아갑시다.
