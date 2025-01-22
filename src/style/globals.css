@@ -84,7 +84,8 @@
   code {
     color: #e33f47;
     background-color: #e9e9e7;
-    padding: 4px 8px;
+    padding: 2px;
+    margin: 0px 2px;
     border-radius: 4px;
   }
 }
@@ -92,6 +93,14 @@
 .prose .anchor:after {
   @apply text-gray-300;
   content: '# ';
+}
+
+.prose p {
+  @apply my-[2px];
+}
+
+.prose h2 {
+  @apply mt-8 mb-3;
 }
 
 /* .prose a {
