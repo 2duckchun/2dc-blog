@@ -16,10 +16,10 @@ const TOP_NAVIGATION_LIST = [
     title: 'POST',
     path: APP_PATH.POST()
   },
-  {
-    title: 'Problem Solving',
-    path: APP_PATH.PROBLEM_SOLVING()
-  },
+  // {
+  //   title: 'Problem Solving',
+  //   path: APP_PATH.PROBLEM_SOLVING()
+  // },
   {
     title: 'GITHUB',
     path: APP_PATH.GITHUB(),
