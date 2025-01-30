@@ -12,16 +12,15 @@ import Link from 'next/link'
 import { getSearchedFrontMatterTitle } from '@/api/search'
 import { cn, parseFilePath } from '@/lib/utils'
 import { MarkDownFrontMatter } from '@/types/matter'
-import { TagBadge } from '../tags/tag-badge'
-import { Button } from '../ui/button'
+import { Button } from '../../components/ui/button'
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle
-} from '../ui/card'
-import { DebouncedInput } from '../ui/debounced-input'
+} from '../../components/ui/card'
+import { DebouncedInput } from '../../components/ui/debounced-input'
 import {
   Dialog,
   DialogClose,
@@ -31,7 +30,8 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger
-} from '../ui/dialog'
+} from '../../components/ui/dialog'
+import { TagBadge } from '../tag-sortable-container/tag-badge'
 
 interface SearchModalProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode

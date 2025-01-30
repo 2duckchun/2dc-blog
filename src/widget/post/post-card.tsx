@@ -4,14 +4,14 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { cn, parseFilePath } from '@/lib/utils'
 import { MarkDownFrontMatter } from '@/types/matter'
-import { TagBadge } from '../tags/tag-badge'
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle
-} from '../ui/card'
+} from '../../components/ui/card'
+import { TagBadge } from '../tag-sortable-container/tag-badge'
 
 interface PostCardProps extends HTMLAttributes<HTMLDivElement> {
   frontmatter: MarkDownFrontMatter

@@ -2,8 +2,8 @@
 
 import { FunctionComponent, HTMLAttributes, Suspense } from 'react'
 import { cn } from '@/lib/utils'
-import { useTagsContext } from '@/providers/tags-provider'
-import { TagBadge } from '../tag-badge'
+import { TagBadge } from './tag-badge'
+import { useTagsContext } from './tags-provider'
 
 interface TagBadgeListProps extends HTMLAttributes<HTMLDivElement> {}
 

@@ -1,9 +1,9 @@
 import { Metadata, ResolvingMetadata } from 'next'
 import { UtterancesComments } from '@/components/comment'
-import { PostContent } from '@/components/post/post-content'
 import { customCompileMdx } from '@/mdx/custom-compile-mdx'
 import { MarkDownModule } from '@/modules/mark-down-module'
 import { MarkDownFrontMatter } from '@/types/matter'
+import { PostContent } from '@/widget/post/post-content'
 
 interface PostPageProps {
   params: Promise<{ slug: string[] }>
