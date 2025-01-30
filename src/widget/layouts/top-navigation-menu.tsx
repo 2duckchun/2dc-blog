@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { APP_PATH } from '@/constants/app-path'
 import { cn } from '@/lib/utils'
-import { SearchModal } from '../modal/search-modal'
+import { SearchModal } from '../../components/modal/search-modal'
 
 interface TopNavigationMenuProps {
   className?: string
@@ -16,10 +16,6 @@ const TOP_NAVIGATION_LIST = [
     title: 'POST',
     path: APP_PATH.POST()
   },
-  // {
-  //   title: 'Problem Solving',
-  //   path: APP_PATH.PROBLEM_SOLVING()
-  // },
   {
     title: 'GITHUB',
     path: APP_PATH.GITHUB(),

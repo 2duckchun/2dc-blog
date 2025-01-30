@@ -1,5 +1,5 @@
-import { Footer } from '@/components/layouts/container/footer'
-import { Header } from '@/components/layouts/container/header'
+import { Footer } from '@/widget/layouts/footer'
+import { Header } from '@/widget/layouts/header'
 
 export default function MainLayout({
   children

@@ -2,7 +2,7 @@
 title: '[구현] PhoneNumberInput 만들기'
 description: '숫자를 입력하면 자동으로 휴대폰 번호 포맷으로 변환해주는 input 컴포넌트를 만들어봅니다.'
 thumbnail: '/images/react.png'
-tags: ['frontend', '구현']
+tags: ['frontend', 'implementation']
 draft: false
 created_date: 2025-01-02 21:07:01
 ---

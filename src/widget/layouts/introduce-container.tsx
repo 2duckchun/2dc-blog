@@ -1,7 +1,7 @@
 import { FunctionComponent, HTMLAttributes } from 'react'
 import Image from 'next/image'
 import { cn } from '@/lib/utils'
-import { MainPoppingText } from '../main-popping-text'
+import { MainPoppingText } from './main-popping-text'
 
 interface IntroduceContainerProps extends HTMLAttributes<HTMLDivElement> {}
 
