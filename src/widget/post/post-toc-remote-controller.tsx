@@ -17,7 +17,7 @@ export const PostTocRemoteController = forwardRef(
       <div
         ref={ref}
         id="draggable"
-        className="left-3/4 top-[100px] z-10 hidden overflow-hidden rounded-md bg-white shadow-md lg:fixed lg:block"
+        className="left-[72%] top-[100px] z-10 hidden min-w-[300px] overflow-hidden rounded-md bg-white shadow-md lg:fixed lg:block"
       >
         <div
           id="draggable-header"
