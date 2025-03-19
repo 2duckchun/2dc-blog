@@ -1,7 +1,6 @@
 import { FunctionComponent, HTMLAttributes } from 'react'
 import Image from 'next/image'
 import { cn } from '@/lib/utils'
-import { MainPoppingText } from './main-popping-text'
 
 interface IntroduceContainerProps extends HTMLAttributes<HTMLDivElement> {}
 
@@ -12,23 +11,24 @@ export const IntroduceContainer: FunctionComponent<IntroduceContainerProps> = ({
   return (
     <section
       className={cn(
-        'w-full md:w-[90%] my-5 flex flex-col md:flex-row items-center gap-5',
+        'w-full bg-slate-400 m-auto h-[200px] bg-[url(/images/cup-of-coffee.jpg)] bg-cover',
         className
       )}
       {...props}
     >
-      <div className="size-[150px] shrink-0 overflow-hidden rounded-full">
-        <Image
-          src={'/images/profile.png'}
-          width={150}
-          height={150}
-          alt={'프로필 사진'}
-        />
-      </div>
-      <div>
-        <MainPoppingText className="my-5 flex w-full gap-2" />
-        <p>안녕하세요.</p>
-        <p>개발자 2duckchun의 블로그입니다.</p>
+      <div className="container flex h-full">
+        <div className="size-[150px] shrink-0 overflow-hidden rounded-full">
+          <Image
+            src={'/images/profile.png'}
+            width={150}
+            height={150}
+            alt={'프로필 사진'}
+          />
+        </div>
+        <div className="mt-12 text-white">
+          <p className="text-3xl font-bold ">2DC Tech</p>
+          <p className="text-base underline">덕춘이의 기술 블로그</p>
+        </div>
       </div>
     </section>
   )
