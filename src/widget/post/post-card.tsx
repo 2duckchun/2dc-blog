@@ -11,7 +11,7 @@ import {
   CardHeader,
   CardTitle
 } from '../../components/ui/card'
-import { TagBadge } from '../tag-sortable-container/tag-badge'
+import { TagBadge } from '../tag-sortable-container/components/tag-badge'
 
 interface PostCardProps extends HTMLAttributes<HTMLDivElement> {
   frontmatter: MarkDownFrontMatter

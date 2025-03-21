@@ -2,8 +2,8 @@
 
 import { FunctionComponent, HTMLAttributes, Suspense } from 'react'
 import { cn } from '@/lib/utils'
+import { useTagsContext } from '@/views/home/contexts/use-tag-context-provider'
 import { TagBadge } from './tag-badge'
-import { useTagsContext } from './tags-provider'
 
 interface TagBadgeListProps extends HTMLAttributes<HTMLDivElement> {}
 
@@ -17,9 +17,10 @@ export const TagBadgeList: FunctionComponent<TagBadgeListProps> = ({
     <div
       role="tablist"
       className={cn(
-        'flex items-center border-l-8 border-r-8 border-t-2 border-b-2 gap-2 overflow-x-auto my-1 py-2 px-3 bg-slate-50',
+        'flex items-center gap-2 flex-wrap my-1 py-2 px-3',
         className
       )}
+      {...props}
     >
       {taglist.map((items) => {
         return (

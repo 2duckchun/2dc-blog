@@ -3,8 +3,8 @@
 import { Fragment, FunctionComponent, HTMLAttributes } from 'react'
 import { useQueryParams } from '@/hooks/use-query-params'
 import { cn } from '@/lib/utils'
+import { useTagsContext } from '@/views/home/contexts/use-tag-context-provider'
 import { PostFrontMatterList } from '../post/post-front-matter-list'
-import { useTagsContext } from './tags-provider'
 
 interface TagSortedPostListProps extends HTMLAttributes<HTMLDivElement> {}
 
@@ -14,6 +14,7 @@ export const TagSortedPostList: FunctionComponent<TagSortedPostListProps> = ({
 }): JSX.Element => {
   const taglist = useTagsContext()
   const currentTag = useQueryParams().getQueryString('tag') ?? 'all'
+
   return (
     <section className={cn(className)} {...props}>
       <div className="m-auto flex w-full flex-col gap-3">
