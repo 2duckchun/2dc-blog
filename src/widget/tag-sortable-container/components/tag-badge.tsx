@@ -37,11 +37,16 @@ export const TagBadge: FunctionComponent<TagBadgeProps> = ({
       role="tab"
       aria-selected={isSelected}
       className={cn(
-        'flex w-fit bg-white cursor-pointer items-center py-1 px-2 justify-center rounded-[15px] border-[1px] border-gray-200 aria-selected:border-r-black aria-selected:border-b-black aria-selected:font-semibold',
+        'flex w-fit bg-white cursor-pointer items-center py-1 px-3 justify-center rounded-[15px] border-[1px] border-gray-200',
+        'aria-selected:bg-navy-500 aria-selected:text-white aria-selected:font-semibold',
         className
       )}
       onClick={(e) => {
         e.preventDefault()
+        window.scrollTo({
+          top: 0,
+          behavior: 'auto'
+        })
         setQuertString({
           tag: title
         })
