@@ -1,5 +1,6 @@
 import '../src/style/globals.css'
 import type { Metadata } from 'next'
+import { Suspense } from 'react'
 import { pretendard } from './font'
 export const metadata: Metadata = {
   metadataBase: new URL('https://blog.2duckchun.com'),
@@ -24,7 +25,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko" className={pretendard.variable}>
-      <body className="min-h-screen">{children}</body>
+      <body className="min-h-screen">
+        <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
+      </body>
     </html>
   )
 }
