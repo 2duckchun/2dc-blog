@@ -102,17 +102,29 @@
 
 .prose .anchor:after {
   @apply text-gray-300;
-  content: '# ';
+  content: '#';
 }
 
-.prose p {
-  @apply my-[2px];
+.prose h1 {
+  @apply text-3xl py-2 mb-3;
 }
 
 .prose h2 {
-  @apply mt-8 mb-3;
+  @apply text-2xl mt-5 mb-3;
 }
 
-/* .prose a {
-  @apply no-underline;
-} */
+.prose h3 {
+  @apply text-xl my-2;
+}
+
+.prose p {
+  @apply my-0;
+}
+
+.prose ul {
+  @apply my-2;
+}
+
+.prose ul li {
+  @apply my-0;
+}

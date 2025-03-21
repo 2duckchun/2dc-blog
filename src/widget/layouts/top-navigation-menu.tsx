@@ -26,7 +26,7 @@ const TOP_NAVIGATION_LIST = [
 export const TopNavigationMenu = ({ className }: TopNavigationMenuProps) => {
   const currentPath = usePathname()
   return (
-    <ul className={cn('flex min-w-[350px] justify-evenly gap-1', className)}>
+    <ul className={cn('flex min-w-[220px] justify-evenly gap-3', className)}>
       {TOP_NAVIGATION_LIST.map((items) => (
         <LinkComponent key={items.title} currentPath={currentPath} {...items} />
       ))}
@@ -55,17 +55,12 @@ const LinkComponent = ({
       <Link
         href={path}
         target={newTab ? '_blank' : '_self'}
-        className={cn('relative group')}
+        className={cn(
+          'relative group flex justify-center items-center h-[40px] w-fit py-2 px-4 rounded-xl hover:bg-navy-100 hover:text-navy-700 transition-all',
+          currentPath === path && 'text-navy-700 bg-navy-200 '
+        )}
       >
         {title}
-        <div
-          className={cn(
-            'absolute left-[50%] bottom-0 -translate-x-[50%] h-[2px] z-50',
-            currentPath === path
-              ? 'bg-black w-[95%] '
-              : 'transition-all w-0 group-hover:w-[95%] bg-black'
-          )}
-        ></div>
       </Link>
     </li>
   )
