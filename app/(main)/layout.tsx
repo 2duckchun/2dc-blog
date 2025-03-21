@@ -11,7 +11,7 @@ export default function MainLayout({
     <>
       <Header />
       <IntroduceContainer />
-      <main className="main-container">{children}</main>
+      <main>{children}</main>
       <Footer />
     </>
   )
