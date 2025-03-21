@@ -1,6 +1,6 @@
 import '../src/style/globals.css'
 import type { Metadata } from 'next'
-import { pretendard } from '@/lib/font'
+import { pretendard } from '@/shared/lib/font'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://blog.2duckchun.com'),

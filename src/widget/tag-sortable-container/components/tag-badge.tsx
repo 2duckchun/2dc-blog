@@ -7,8 +7,8 @@ import {
   useRef,
   useState
 } from 'react'
-import { useQueryParams } from '@/hooks/use-query-params'
-import { cn } from '@/lib/utils'
+import { useQueryParams } from '@/shared/hooks/use-query-params'
+import { cn } from '@/shared/lib/utils'
 
 interface TagBadgeProps extends HTMLAttributes<HTMLDivElement> {
   title: string

@@ -3,7 +3,7 @@
 import { FunctionComponent, useState } from 'react'
 import { Menu } from 'lucide-react'
 import Link from 'next/link'
-import { cn } from '@/lib/utils'
+import { cn } from '@/shared/lib/utils'
 import { TopNavigationMenu } from '@/widget/layouts/top-navigation-menu'
 
 interface HeaderProps extends React.HTMLAttributes<HTMLDivElement> {}

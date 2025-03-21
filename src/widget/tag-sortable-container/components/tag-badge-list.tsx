@@ -1,7 +1,7 @@
 'use client'
 
 import { FunctionComponent, HTMLAttributes, Suspense } from 'react'
-import { cn } from '@/lib/utils'
+import { cn } from '@/shared/lib/utils'
 import { useTagsContext } from '@/views/home/contexts/use-tag-context-provider'
 import { TagBadge } from './tag-badge'
 

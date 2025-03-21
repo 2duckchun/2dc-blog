@@ -2,7 +2,7 @@ import { FunctionComponent, HTMLAttributes, Suspense } from 'react'
 import dayjs from 'dayjs'
 import Image from 'next/image'
 import Link from 'next/link'
-import { cn, parseFilePath } from '@/lib/utils'
+import { cn, parseFilePath } from '@/shared/lib/utils'
 import { MarkDownFrontMatter } from '@/types/matter'
 import {
   Card,
@@ -10,7 +10,7 @@ import {
   CardDescription,
   CardHeader,
   CardTitle
-} from '../../components/ui/card'
+} from '../../shared/ui/card'
 import { TagBadge } from '../tag-sortable-container/components/tag-badge'
 
 interface PostCardProps extends HTMLAttributes<HTMLDivElement> {

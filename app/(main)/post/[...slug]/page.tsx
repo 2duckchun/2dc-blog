@@ -1,8 +1,8 @@
 import { Metadata, ResolvingMetadata } from 'next'
-import { UtterancesComments } from '@/components/comment'
-import { customCompileMdx } from '@/mdx/custom-compile-mdx'
 import { MarkDownModule } from '@/modules/mark-down-module'
+import { customCompileMdx } from '@/shared/lib/mdx/custom-compile-mdx'
 import { MarkDownFrontMatter } from '@/types/matter'
+import { UtterancesComments } from '@/widget/comment'
 import { PostContent } from '@/widget/post/post-content'
 
 interface PostPageProps {

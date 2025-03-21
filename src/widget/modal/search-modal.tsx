@@ -10,17 +10,17 @@ import {
 import dayjs from 'dayjs'
 import Link from 'next/link'
 import { getSearchedFrontMatterTitle } from '@/api/search'
-import { cn, parseFilePath } from '@/lib/utils'
+import { cn, parseFilePath } from '@/shared/lib/utils'
 import { MarkDownFrontMatter } from '@/types/matter'
-import { Button } from '../../components/ui/button'
+import { Button } from '../../shared/ui/button'
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle
-} from '../../components/ui/card'
-import { DebouncedInput } from '../../components/ui/debounced-input'
+} from '../../shared/ui/card'
+import { DebouncedInput } from '../../shared/ui/debounced-input'
 import {
   Dialog,
   DialogClose,
@@ -30,7 +30,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger
-} from '../../components/ui/dialog'
+} from '../../shared/ui/dialog'
 import { TagBadge } from '../tag-sortable-container/components/tag-badge'
 
 interface SearchModalProps extends HTMLAttributes<HTMLDivElement> {

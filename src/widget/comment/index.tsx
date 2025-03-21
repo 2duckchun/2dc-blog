@@ -1,7 +1,7 @@
 'use client'
 
 import { FunctionComponent, HTMLAttributes, useEffect, useRef } from 'react'
-import { cn } from '@/lib/utils'
+import { cn } from '@/shared/lib/utils'
 
 interface UtterancesCommentsProps extends HTMLAttributes<HTMLDivElement> {}
 

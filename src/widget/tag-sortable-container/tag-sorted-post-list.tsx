@@ -1,8 +1,8 @@
 'use client'
 
 import { Fragment, FunctionComponent, HTMLAttributes } from 'react'
-import { useQueryParams } from '@/hooks/use-query-params'
-import { cn } from '@/lib/utils'
+import { useQueryParams } from '@/shared/hooks/use-query-params'
+import { cn } from '@/shared/lib/utils'
 import { useTagsContext } from '@/views/home/contexts/use-tag-context-provider'
 import { PostFrontMatterList } from '../post/post-front-matter-list'
 

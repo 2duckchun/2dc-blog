@@ -1,10 +1,10 @@
 'use client'
 
 import { FunctionComponent, HTMLAttributes } from 'react'
-import { useDragElement } from '@/hooks/use-drag-element'
-import { useGetTocAllNodeList } from '@/hooks/use-get-toc-all-node-list'
-import { useTocHighlightObserver } from '@/hooks/use-toc-highlight-observer'
-import { cn } from '@/lib/utils'
+import { useDragElement } from '@/shared/hooks/use-drag-element'
+import { useGetTocAllNodeList } from '@/shared/hooks/use-get-toc-all-node-list'
+import { useTocHighlightObserver } from '@/shared/hooks/use-toc-highlight-observer'
+import { cn } from '@/shared/lib/utils'
 import { PostTocRemoteController } from './post-toc-remote-controller'
 
 interface PostContentProps extends HTMLAttributes<HTMLDivElement> {

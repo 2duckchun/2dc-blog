@@ -1,5 +1,5 @@
 import { FunctionComponent, HTMLAttributes } from 'react'
-import { cn } from '@/lib/utils'
+import { cn } from '@/shared/lib/utils'
 import { TagsDetailPost } from '@/types/tags'
 import { TagBadgeList } from './components/tag-badge-list'
 import { TagsContextProvider } from './contexts/tags-provider'

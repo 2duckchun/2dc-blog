@@ -1,6 +1,6 @@
 import { forwardRef, HTMLAttributes } from 'react'
 import Link from 'next/link'
-import { cn } from '@/lib/utils'
+import { cn } from '@/shared/lib/utils'
 import { TocData } from '@/types/post'
 
 interface PostTocRemoteControllerProps extends HTMLAttributes<HTMLDivElement> {

@@ -3,8 +3,8 @@
 import { Search } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { APP_PATH } from '@/constants/app-path'
-import { cn } from '@/lib/utils'
+import { APP_PATH } from '@/shared/constants/app-path'
+import { cn } from '@/shared/lib/utils'
 import { SearchModal } from '../modal/search-modal'
 
 interface TopNavigationMenuProps {
