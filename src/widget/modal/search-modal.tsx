@@ -11,6 +11,7 @@ import dayjs from 'dayjs'
 import Link from 'next/link'
 import { getSearchedFrontMatterTitle } from '@/api/search'
 import { cn, parseFilePath } from '@/shared/lib/utils'
+import { TagBadge } from '@/shared/ui/tag-badge'
 import { MarkDownFrontMatter } from '@/types/matter'
 import { Button } from '../../shared/ui/button'
 import {
@@ -31,7 +32,6 @@ import {
   DialogTitle,
   DialogTrigger
 } from '../../shared/ui/dialog'
-import { TagBadge } from '../../views/home/components/tag-badge-list/tag-badge'
 
 interface SearchModalProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode

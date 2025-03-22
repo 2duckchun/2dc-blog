@@ -87,7 +87,7 @@ export class MarkDownModule {
         })
       })
     })
-    return tagMap
+    return Array.from(tagMap)
 
     // 구 코드
     // if (tagMap.has(tag)) {

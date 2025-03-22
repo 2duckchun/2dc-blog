@@ -3,6 +3,7 @@ import dayjs from 'dayjs'
 import Image from 'next/image'
 import Link from 'next/link'
 import { cn, parseFilePath } from '@/shared/lib/utils'
+import { TagBadge } from '@/shared/ui/tag-badge'
 import { MarkDownFrontMatter } from '@/types/matter'
 import {
   Card,
@@ -11,7 +12,6 @@ import {
   CardHeader,
   CardTitle
 } from '../../shared/ui/card'
-import { TagBadge } from '../../views/home/components/tag-badge-list/tag-badge'
 
 interface PostCardProps extends HTMLAttributes<HTMLDivElement> {
   frontmatter: MarkDownFrontMatter

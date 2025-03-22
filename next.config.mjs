@@ -7,13 +7,6 @@ const nextConfig = {
         hostname: 'cdn.pixabay.com'
       }
     ]
-  },
-  output: 'standalone',
-  experimental: {
-    outputFileTracingRoot: process.cwd(),
-    outputFileTracingIncludes: {
-      '/**': ['./content/**/*']
-    }
   }
 }
 

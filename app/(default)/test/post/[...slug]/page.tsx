@@ -40,6 +40,7 @@ export async function generateMetadata(
 
 const PostPage = async ({ params }: PostPageProps) => {
   const { slug } = await params
+
   const { content } = await getPostData(slug[0])
   return (
     <main className="min-h-screen p-4 px-8">

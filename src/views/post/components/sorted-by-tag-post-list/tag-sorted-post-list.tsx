@@ -3,8 +3,8 @@
 import { Fragment, FunctionComponent, HTMLAttributes } from 'react'
 import { useQueryParams } from '@/shared/hooks/use-query-params'
 import { cn } from '@/shared/lib/utils'
-import { useMarkdownListContext } from '@/views/home/contexts/use-markdown-list-context'
 import { PostFrontMatterList } from '@/widget/post/post-front-matter-list'
+import { useMarkdownListContext } from '../../contexts/use-markdown-list-context'
 
 interface TagSortedPostListProps extends HTMLAttributes<HTMLDivElement> {}
 

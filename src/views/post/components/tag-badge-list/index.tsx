@@ -2,8 +2,8 @@
 
 import { FunctionComponent, HTMLAttributes, Suspense } from 'react'
 import { cn } from '@/shared/lib/utils'
-import { useMarkdownListContext } from '@/views/home/contexts/use-markdown-list-context'
-import { TagBadge } from './tag-badge'
+import { useMarkdownListContext } from '@/views/post/contexts/use-markdown-list-context'
+import { TagBadge } from '../../../../shared/ui/tag-badge'
 
 interface TagBadgeListProps extends HTMLAttributes<HTMLDivElement> {}
 

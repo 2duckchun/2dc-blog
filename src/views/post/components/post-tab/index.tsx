@@ -9,7 +9,7 @@ interface HomeTabProps {
   className?: string
 }
 
-export const HomeTab = ({ className }: HomeTabProps) => {
+export const PostTab = ({ className }: HomeTabProps) => {
   const { currentTab, handleTabChange, tabList } = useMarkdownListContext()
 
   return (
