@@ -1,6 +1,8 @@
 'use client'
 
+import { ReactNode } from 'react'
 import { Search } from 'lucide-react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { APP_PATH } from '@/shared/constants/app-path'
@@ -13,12 +15,22 @@ interface TopNavigationMenuProps {
 
 const TOP_NAVIGATION_LIST = [
   {
-    title: 'POST',
-    path: APP_PATH.POST()
+    title: (
+      <Image src={'/icons/github.svg'} alt="github" width={40} height={40} />
+    ),
+    path: APP_PATH.GITHUB(),
+    newTab: true
   },
   {
-    title: 'GITHUB',
-    path: APP_PATH.GITHUB(),
+    title: (
+      <Image
+        src={'/icons/linkedin.svg'}
+        alt="linkedin"
+        width={40}
+        height={40}
+      />
+    ),
+    path: APP_PATH.LINKEDIN(),
     newTab: true
   }
 ]
@@ -26,13 +38,13 @@ const TOP_NAVIGATION_LIST = [
 export const TopNavigationMenu = ({ className }: TopNavigationMenuProps) => {
   const currentPath = usePathname()
   return (
-    <ul className={cn('flex min-w-[220px] justify-evenly gap-3', className)}>
+    <ul className={cn('flex w-full md:w-fit justify-evenly gap-2', className)}>
       {TOP_NAVIGATION_LIST.map((items) => (
-        <LinkComponent key={items.title} currentPath={currentPath} {...items} />
+        <LinkComponent key={items.path} currentPath={currentPath} {...items} />
       ))}
-      <li className="flex items-center justify-center">
+      <li className="ml-4 flex items-center justify-center">
         <SearchModal>
-          <Search role="button" className="cursor-pointer" />
+          <Search size={24} role="button" className="cursor-pointer" />
         </SearchModal>
       </li>
     </ul>
@@ -45,7 +57,7 @@ const LinkComponent = ({
   currentPath,
   newTab
 }: {
-  title: string
+  title: ReactNode
   path: string
   currentPath: string
   newTab?: boolean
@@ -56,7 +68,7 @@ const LinkComponent = ({
         href={path}
         target={newTab ? '_blank' : '_self'}
         className={cn(
-          'relative group flex justify-center items-center h-[40px] w-fit py-2 px-4 rounded-xl hover:bg-navy-100 hover:text-navy-700 transition-all',
+          'relative group flex justify-center items-center h-[40px] w-fit py-2 px-2 rounded-xl hover:bg-navy-100 hover:text-navy-700 transition-all',
           currentPath === path && 'text-navy-700 bg-navy-200 '
         )}
       >

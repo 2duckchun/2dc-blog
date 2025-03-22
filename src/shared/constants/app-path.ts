@@ -3,6 +3,7 @@ export const APP_PATH = {
   POST: () => '/',
   SNIPPETS: () => '/snippets',
   TAGS: () => '/tags',
+  LINKEDIN: () => 'https://www.linkedin.com/in/kkts9308/',
   GITHUB: () => 'https://github.com/2duckchun',
   PROBLEM_SOLVING: () => '/problem-solving'
 }

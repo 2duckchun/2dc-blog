@@ -36,7 +36,9 @@ const MobileHeader = () => {
           }}
         />
       </section>
-      {isOpen && <TopNavigationMenu className="flex-col gap-3 pb-5" />}
+      {isOpen && (
+        <TopNavigationMenu className="flex-col items-center justify-center gap-3 pb-5" />
+      )}
     </div>
   )
 }
