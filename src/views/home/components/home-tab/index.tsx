@@ -1,24 +1,24 @@
-import { useState } from 'react'
+'use client'
+
 import { cn } from '@/shared/lib/utils'
 import { Tab } from '@/shared/ui/tab'
+import { ContentTabValueType } from '@/types/tags'
+import { useMarkdownListContext } from '../../contexts/use-markdown-list-context'
 
 interface HomeTabProps {
   className?: string
 }
 
 export const HomeTab = ({ className }: HomeTabProps) => {
-  const [currentTab, setCurrentTab] = useState('dev')
-  const tabList = [
-    { label: 'DEV', value: 'dev' },
-    { label: 'ESSAY(공사중)', value: 'essay' },
-    { label: 'PS(공사중)', value: 'ps' }
-  ]
-  const handleTabChange = (tab: string) => {
-    setCurrentTab(tab)
-  }
+  const { currentTab, handleTabChange, tabList } = useMarkdownListContext()
+
   return (
     <div className={cn(className)}>
-      <Tab tabList={tabList} currentTab={currentTab} setTab={handleTabChange} />
+      <Tab
+        tabList={tabList}
+        currentTab={currentTab}
+        setTab={(tab: string) => handleTabChange(tab as ContentTabValueType)}
+      />
     </div>
   )
 }

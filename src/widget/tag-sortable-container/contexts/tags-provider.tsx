@@ -1,9 +1,9 @@
 'use client'
 
 import { createContext, useContext } from 'react'
-import { TagsData } from '@/types/tags'
+import { TagTuple } from '@/types/tags'
 
-const TagsContext = createContext<TagsData[] | null>(null)
+const TagsContext = createContext<TagTuple[] | null>(null)
 
 export const useTagsContext = () => {
   const context = useContext(TagsContext)
@@ -17,7 +17,7 @@ export const TagsContextProvider = ({
   taglist,
   children
 }: {
-  taglist: TagsData[]
+  taglist: TagTuple[]
   children: React.ReactNode
 }) => {
   return <TagsContext.Provider value={taglist}>{children}</TagsContext.Provider>

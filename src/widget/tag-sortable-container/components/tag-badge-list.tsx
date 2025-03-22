@@ -2,7 +2,7 @@
 
 import { FunctionComponent, HTMLAttributes, Suspense } from 'react'
 import { cn } from '@/shared/lib/utils'
-import { useTagsContext } from '@/views/home/contexts/use-tag-context-provider'
+import { useMarkdownListContext } from '@/views/home/contexts/use-markdown-list-context'
 import { TagBadge } from './tag-badge'
 
 interface TagBadgeListProps extends HTMLAttributes<HTMLDivElement> {}
@@ -11,7 +11,8 @@ export const TagBadgeList: FunctionComponent<TagBadgeListProps> = ({
   className,
   ...props
 }): JSX.Element => {
-  const taglist = useTagsContext()
+  // const taglist = useTagsContext()
+  const { markdownList } = useMarkdownListContext()
 
   return (
     <div
@@ -22,7 +23,7 @@ export const TagBadgeList: FunctionComponent<TagBadgeListProps> = ({
       )}
       {...props}
     >
-      {taglist.map((items) => {
+      {markdownList.map((items) => {
         return (
           <Suspense key={items[0]}>
             <TagBadge title={items[0]} count={items[1].count} />

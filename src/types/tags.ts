@@ -1,4 +1,7 @@
+import { TAB_LIST } from '@/shared/constants/tab-list'
 import { MarkDownFrontMatter } from './matter'
+
+export type TagName = string
 
 export type TagsDetailPost = {
   count: number
@@ -6,3 +9,5 @@ export type TagsDetailPost = {
 }
 
 export type TagsData = [string, TagsDetailPost]
+
+export type ContentTabValueType = (typeof TAB_LIST)[number]['value']

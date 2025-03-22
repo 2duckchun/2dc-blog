@@ -2,10 +2,10 @@ import { HTMLAttributes } from 'react'
 import { cn } from '../lib/utils'
 
 interface TabProps extends HTMLAttributes<HTMLDivElement> {
-  tabList: {
+  tabList: ReadonlyArray<{
     label: string
     value: string
-  }[]
+  }>
   currentTab: string
   setTab: (tab: string) => void
 }
@@ -26,7 +26,9 @@ export const Tab = ({
             'cursor-pointer text-center flex items-center justify-center min-h-[50px] flex-1 border-b-2 border-gray-200',
             currentTab === item.value && 'border-navy-600'
           )}
-          onClick={() => setTab(item.value)}
+          onClick={() => {
+            setTab(item.value)
+          }}
         >
           {item.label}
         </div>
