@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 import { getMarkdownListWithTagPerContent } from '@/server-actions/contents/get-content-markdown'
+import { getCurrentWorkingDirectory } from '@/server-actions/contents/get-current-working-directory'
 import { TAB_LIST } from '@/shared/constants/tab-list'
 import { ContentTabValueType, TagsDetailPost } from '@/types/tags'
 
@@ -9,6 +10,7 @@ interface MarkdownListContextType {
   handleTabChange: (tab: ContentTabValueType) => void
   isLoading: boolean
   tabList: typeof TAB_LIST
+  currentWorkingDirectory: string
 }
 
 export const MarkdownListContext =
@@ -24,6 +26,8 @@ export const MarkdownListContextProvider = ({
   )
   const [currentTab, setCurrentTab] = useState<ContentTabValueType>('post')
   const [isLoading, setIsLoading] = useState(false)
+  const [currentWorkingDirectory, setCurrentWorkingDirectory] =
+    useState<string>('')
 
   const handleTabChange = (tab: ContentTabValueType) => {
     // 히스토리가 이상해지는 이슈가 있음. 구조를 아예 바꿔야 할듯함
@@ -32,8 +36,18 @@ export const MarkdownListContextProvider = ({
   }
 
   useEffect(() => {
+    const fetchCWD = async () => {
+      const cwd = await getCurrentWorkingDirectory()
+      setCurrentWorkingDirectory(cwd)
+      console.log('Current working directory:', cwd)
+    }
+    fetchCWD()
+  }, [])
+
+  useEffect(() => {
     const fetchMarkdownList = async () => {
       console.log('currentTab', currentTab)
+      console.log('currentWorkingDirectory', currentWorkingDirectory)
       setIsLoading(true)
       const markdownList = await getMarkdownListWithTagPerContent(currentTab)
       setMarkdownList(markdownList)
@@ -41,7 +55,7 @@ export const MarkdownListContextProvider = ({
       setIsLoading(false)
     }
     fetchMarkdownList()
-  }, [currentTab])
+  }, [currentTab, currentWorkingDirectory])
 
   return (
     <MarkdownListContext.Provider
@@ -50,7 +64,8 @@ export const MarkdownListContextProvider = ({
         markdownList,
         currentTab,
         handleTabChange,
-        isLoading
+        isLoading,
+        currentWorkingDirectory
       }}
     >
       {children}
