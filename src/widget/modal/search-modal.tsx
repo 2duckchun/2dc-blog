@@ -31,7 +31,7 @@ import {
   DialogTitle,
   DialogTrigger
 } from '../../shared/ui/dialog'
-import { TagBadge } from '../tag-sortable-container/components/tag-badge'
+import { TagBadge } from '../../views/home/components/tag-badge-list/tag-badge'
 
 interface SearchModalProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode
