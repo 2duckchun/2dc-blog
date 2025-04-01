@@ -62,8 +62,8 @@ const parsePathnameAndMapToTab = (pathname: string): ContentTabValueType => {
   switch (parsedPath) {
     case 'problem-solving':
       return 'problem-solving'
-    case 'essay':
-      return 'essay'
+    case 'note':
+      return 'note'
     default:
       return 'post'
   }

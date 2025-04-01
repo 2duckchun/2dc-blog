@@ -9,6 +9,7 @@ import {
 } from 'react'
 import { useQueryParams } from '@/shared/hooks/use-query-params'
 import { cn } from '@/shared/lib/utils'
+import { scrollToTop } from '../lib/scroll-to-top'
 
 interface TagBadgeProps extends HTMLAttributes<HTMLDivElement> {
   title: string
@@ -43,10 +44,7 @@ export const TagBadge: FunctionComponent<TagBadgeProps> = ({
       )}
       onClick={(e) => {
         e.preventDefault()
-        window.scrollTo({
-          top: 0,
-          behavior: 'auto'
-        })
+        scrollToTop()
         setQuertString({
           tag: title
         })

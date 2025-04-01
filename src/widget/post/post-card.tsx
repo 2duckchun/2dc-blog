@@ -38,7 +38,7 @@ export const PostCard: FunctionComponent<PostCardProps> = ({
         <div className="hidden items-center sm:flex sm:justify-center">
           <div className="relative size-[150px]">
             <Image
-              src={frontmatter.thumbnail}
+              src={frontmatter.thumbnail || '/images/note.jpg'}
               fill
               unoptimized
               className="rounded-lg"
