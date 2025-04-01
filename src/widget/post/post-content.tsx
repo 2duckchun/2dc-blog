@@ -24,7 +24,7 @@ export const PostContent: FunctionComponent<PostContentProps> = ({
     <>
       <div
         ref={contentRef}
-        className={cn('prose m-auto py-4', className)}
+        className={cn('prose m-auto p-4', className)}
         {...props}
       >
         {children}

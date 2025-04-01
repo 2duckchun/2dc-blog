@@ -106,15 +106,15 @@
 }
 
 .prose h1 {
-  @apply text-3xl py-2 mb-3;
+  @apply text-3xl py-2 mt-8 mb-4;
 }
 
 .prose h2 {
-  @apply text-2xl mt-5 mb-3;
+  @apply text-2xl mt-7 mb-1;
 }
 
 .prose h3 {
-  @apply text-xl my-2;
+  @apply text-xl mt-5 mb-1;
 }
 
 .prose p {
