@@ -118,7 +118,7 @@
 }
 
 .prose p {
-  @apply my-0;
+  @apply mb-2;
 }
 
 .prose ul {
