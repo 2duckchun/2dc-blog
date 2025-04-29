@@ -29,7 +29,7 @@ from a forwarded Server Actions request. Aborting the action.
 
 ## 원인
 
-1. 새창의 origin header는 PASS-AUTH.com인 상황이다.
+1. 브라우저는 `PASS-AUTH.com`에서 열린 창이므로, `Request`시 자동으로 `Origin: PASS-AUTH.com` 헤더를 포함하게 된다.
 
 2. 인증이 성공적으로 마무리된 후 전달받는 HTTP의 x-forwarded-host header는 something.cloudflare.com 이다.
 
@@ -62,25 +62,19 @@ x-forwarded-host와 Origin이 일치하는지 (또는 동일한 allowedOrigins �
 
 ### ✅ 이 설정이 해결해주는 것
 
-설정을 추가하면 Next.js는 아래처럼 동작한다.
-
-1. 새 창에서 PASS 인증 성공 후, 브라우저가 Origin: PASS-AUTH.com을 가진 요청을 보냄
-
-2. Cloudflare 리버스 프록시가 이 요청을 중계하며 x-forwarded-host: something.cloudflare.com 헤더를 붙임
-
-3. Next.js는 요청을 받았을 때:
-
 - `Origin`: PASS-AUTH.com
 
-- `x-forwarded-host`: something.cloudflare.com 이
+- `x-forwarded-host`: something.cloudflare.com
 
-둘이 일치하지 않지만, PASS-AUTH.com이 allowedOrigins에 있으므로 허용한다.
+둘이 일치하지 않지만, PASS-AUTH.com은 allowedOrigins에 명시되어 있으므로 통신이 허용된다.
 
-즉, 이 설정은 다음 검사를 완화한다.
+즉, 이 설정은 아래와 같은 유효성 검사를 한다.
 
-❌ origin !== x-forwarded-host `→` 차단
+```
+❌ origin !== x-forwarded-host → 차단
 
-✅ origin ∈ allowedOrigins `→` 통과
+✅ origin ∈ allowedOrigins → 통과
+```
 
 ### 더 공부해보면 좋을 것들
 
