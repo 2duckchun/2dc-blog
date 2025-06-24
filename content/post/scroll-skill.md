@@ -9,7 +9,7 @@ created_date: 2025-06-24 22:35:56
 
 # intersectionObserver을 이용한 useInView 구현
 
-스크롤바가 하단을 긁고 있는지 체크하기 위한 코드를 짜야했습니다. 통상적으로 스크롤을 감지한다고 하면 이벤트를 생각할 수 있습니다. 어려울게 없는 구현이다보니 깊히 생각하지 않고 아래와 같은 코드를 짰습니다.
+스크롤바가 하단을 긁고 있는지 체크하기 위한 코드를 짜야했습니다. 통상적으로 스크롤을 감지한다고 하면 스크롤 이벤트 활용을 생각할 수 있죠. 어려울게 없는 구현이다보니 깊히 생각하지 않고 아래와 같은 코드를 짰습니다.
 
 ```ts
 'use client'
@@ -47,7 +47,7 @@ export default function ScrollPage() {
 }
 ```
 
-element의 높이 관련 속성을 이용해 스크롤의 위치가 어디있는지를 계산하는 직관적이고 원시적인 방식입니다.
+element의 높이 관련 속성을 이용해 스크롤의 위치가 어디있는지를 계산하는 직관적이고 원시적인 방식으로 구현한 코드 예시입니다.
 
 <img width="734" alt="image" src="https://github.com/user-attachments/assets/c9ada8cf-3de3-4d05-b21e-7369e256a9a8" />
 
@@ -58,7 +58,7 @@ element의 높이 관련 속성을 이용해 스크롤의 위치가 어디있는
 scrollHeight가 2000이고 clientHeight가 600이라는 가정하에, 스크롤을 다 내리면 scrollTop이 1400이 됩니다.
 최종적으로 스크롤을 다 내리면 `clientHeight + scrollTop`와 `scrollHeight`가 같아지는데요. 너무 딱 맞게 하면 여유가 없으니 약간의 완충값을 사용하여 `clientHeight + scrollTop >= scrollHeight - buffer(완충값)`으로 스크롤이 element의 맨 밑에 닿았는지 감지합니다.
 
-아무튼 위와 같은 코드를 짜고 팀장님께 리뷰를 받았습니다. **스크롤 이벤트를 쓰게 되면 코드가 너무 절차지향적이고, DOM에 접근하여 계산하는게 많으니 저런 코드가 쌓이면 쌓일수록 유지보수에 좋지 않을 것이다**라는 피드백을 얻을 수 있었습니다. 그리고 `motion` 라이브러리의 `useInView`를 소개시켜 주셨습니다.
+여하튼 위와 같은 코드를 짜고 팀장님께 리뷰를 받았습니다. **스크롤 이벤트를 쓰게 되면 코드가 너무 절차지향적이고, DOM에 접근하여 계산하는게 많으니 저런 코드가 쌓이면 쌓일수록 유지보수에 좋지 않을 것이다**라는 피드백을 얻을 수 있었습니다. 그리고 대안으로 `motion` 라이브러리의 `useInView` 활용을 소개해 주셨습니다.
 
 ```tsx
 import { useInView } from 'motion/react'
@@ -73,15 +73,15 @@ const isInView = useInView(bottomRef, {
 <div ref={bottomRef} className="h-[50px]">감지할 바닥</div>
 ```
 
-햐. 깔끔합니다. 선언적인 방식이 너무나도 맘에 들었습니다.
+햐. 깔끔합니다. 선언적인 방식이 너무나도 맘에 들었습니다. 역시 올바른 라이브러리의 적절한 활용은 코드 품질과 생산성을 크게 높혀주는 것 같습니다.
 
-앞으로 자주 써먹을 방식 같아서 내부 구현을 흉내내보고자 아래와 같이 useInView을 커스텀 해보았습니다.
+이 코드에 왠지 모르게 꽂혔고(?), 이처럼 깔끔한 코드는 앞으로 자주 써먹어야 할 방식같으므로 내부 구현을 흉내내보고자 아래와 같이 useInView을 커스텀 해보았습니다.
 
 ## 커스텀 useInView
 
 useInView의 인자값을 보고 아 얘는 내부적으로 `intersectionObserver`를 사용하겠구나 라는 감이 왔습니다.
 
-자주 사용하는 코드가 아니다보니 오랜만에 활용을 좀 해볼겸, 아래와 같이 코드를 만들어본 후 테스팅 해보았습니다.
+`intersectionObserver`는 자주 사용하는 코드가 아니다보니 오랜만에 활용을 좀 해볼겸, 아래와 같이 코드를 만들어본 후 테스팅 해보았습니다. (막히는 부분은 AI의 도움을 약간 받았습니다.)
 
 ### useInView
 
@@ -195,7 +195,7 @@ export default function ScrollObserverPage() {
 type RefCallback<T> = (instance: T | null) => void
 ```
 
-React에서 ref는 두 가지 방식으로 전달할 수 있습니다:
+React에서 ref는 두 가지 방식으로 전달할 수 있습니다.
 
 - **객체형 ref (Object Ref)** : useRef()로 만든 객체
 - **함수형 ref (Callback Ref)** : RefCallback 타입의 함수
@@ -253,3 +253,5 @@ const setRef = useCallback((node: Element | null) => {
 ## 회고
 
 선언적인 코드 뒤에는 복잡한 코드들이 있습니다. 내가 쓰는 라이브러리들 내부에 어떤 복잡한 원리가 숨어있는지 공부해보는 것은 굉장히 즐거운 것 같습니다.
+
+팀장님께서 추천해주신 라이브러리 하나로 인해 생각보다 괜찮은 지식과 깨달음(?)을 얻어갈 수 있는 시간이었습니다.

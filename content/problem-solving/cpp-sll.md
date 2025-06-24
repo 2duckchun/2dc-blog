@@ -3,7 +3,7 @@ title: '단일 연결 리스트 구현'
 description: 'C++로 단일 연결 리스트를 구현해봅니다.'
 thumbnail: '/icons/c++.svg'
 tags: ['C++', 'data-structure']
-draft: false
+draft: true
 created_date: 2025-04-02 23:31:36
 ---
 
