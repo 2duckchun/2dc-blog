@@ -122,7 +122,7 @@ const config = {
           css: {
             //...
             'h1,h2,h3,h4': {
-              'scroll-margin-top': spacing[20]
+              'scroll-margin-top': spacing[50]
             },
             code: {
               color: '#e33f47',
@@ -136,7 +136,6 @@ const config = {
             },
             a: {
               color: '#0000FF',
-              display: 'block',
               'word-break': 'break-all',
               'text-decoration': 'underline'
             }

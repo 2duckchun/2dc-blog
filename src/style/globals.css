@@ -100,10 +100,10 @@
   }
 }
 
-.prose .anchor:after {
+/* .prose .anchor:after {
   @apply text-gray-300;
   content: '#';
-}
+} */
 
 .prose h1 {
   @apply text-3xl py-2 mt-8 mb-4;

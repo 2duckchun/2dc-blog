@@ -1,7 +1,8 @@
-import { Hash } from 'lucide-react'
-import Link from 'next/link'
 import { compileMDX } from 'next-mdx-remote/rsc'
 import { options } from './options'
+import { H1HashButton } from './ui/h1-hash-button'
+import { H2HashButton } from './ui/h2-hash-button'
+import { H3HashButton } from './ui/h3-hash-button'
 
 export const customCompileMdx = async ({ sourse }: { sourse: string }) => {
   const { content, frontmatter } = await compileMDX({
@@ -9,16 +10,13 @@ export const customCompileMdx = async ({ sourse }: { sourse: string }) => {
     options: options,
     components: {
       h1: ({ children, id }) => {
-        return (
-          <div className="group relative">
-            <Link href={`#${id}`}>
-              <div className="absolute -left-3 top-[8px] hidden -translate-x-4 pr-3 text-xl group-hover:block">
-                <Hash />
-              </div>
-            </Link>
-            <h1>{children}</h1>
-          </div>
-        )
+        return <H1HashButton id={id!}>{children}</H1HashButton>
+      },
+      h2: ({ children, id }) => {
+        return <H2HashButton id={id!}>{children}</H2HashButton>
+      },
+      h3: ({ children, id }) => {
+        return <H3HashButton id={id!}>{children}</H3HashButton>
       },
       Hint: ({ children, id }) => {
         return (
