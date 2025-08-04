@@ -55,7 +55,9 @@ const DesktopHeader = () => {
 const HeadingLogo = () => {
   return (
     <Link href={'/'}>
-      <h1 className="text-xl font-bold xl:text-2xl">2DC BLOG</h1>
+      <h1 className="text-xl font-bold transition hover:scale-105 active:scale-95 xl:text-2xl">
+        2DC BLOG
+      </h1>
     </Link>
   )
 }

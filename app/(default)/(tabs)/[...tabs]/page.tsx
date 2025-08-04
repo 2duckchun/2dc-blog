@@ -3,8 +3,7 @@ export const revalidate = 36000
 import { Metadata } from 'next'
 import { ResolvingMetadata } from 'next'
 import { getMarkdownContentData } from '@/shared/lib/get-markdown-content-data'
-import { UtterancesComments } from '@/widget/comment'
-import { PostContent } from '@/widget/post/post-content'
+import PostContentView from '@/views/post-content'
 
 interface TabPageProps {
   params: Promise<{ tabs: string[] }>
@@ -32,12 +31,6 @@ export async function generateMetadata(
 export default async function TabPage({ params }: TabPageProps) {
   const { tabs } = await params
   const [tab, markdownName] = tabs
-  const { content } = await getMarkdownContentData(tab, markdownName)
 
-  return (
-    <div>
-      <PostContent>{content}</PostContent>
-      <UtterancesComments />
-    </div>
-  )
+  return <PostContentView params={params} />
 }
