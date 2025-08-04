@@ -14,8 +14,6 @@ export const SortedByTagPostList: FunctionComponent<TagSortedPostListProps> = ({
 }): JSX.Element => {
   const { markdownList } = useMarkdownListContext()
   const currentTag = useQueryParams().getQueryString('tag') ?? 'all'
-  console.log(markdownList)
-  console.log(currentTag)
   return (
     <section className={cn(className)} {...props}>
       <div className="m-auto flex w-full flex-col gap-3">
