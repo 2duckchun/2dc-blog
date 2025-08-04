@@ -1,6 +1,6 @@
 import { MarkDownModule } from '@/domain/markdown/modules'
-import { Separator } from '@/shared/ui/separator'
 import { ContentTabValueType } from '@/domain/post/schema/tags'
+import { Separator } from '@/shared/ui/separator'
 import { PostTab } from './components/post-tab'
 import { SortedByTagPostList } from './components/sorted-by-tag-post-list'
 import { TagBadgeList } from './components/tag-badge-list'

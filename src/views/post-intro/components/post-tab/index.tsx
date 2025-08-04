@@ -1,8 +1,8 @@
 'use client'
 
+import { ContentTabValueType } from '@/domain/post/schema/tags'
 import { cn } from '@/shared/lib/utils'
 import { Tab } from '@/shared/ui/tab'
-import { ContentTabValueType } from '@/domain/post/schema/tags'
 import { useMarkdownListContext } from '../../contexts/use-markdown-list-context'
 
 interface HomeTabProps {
