@@ -1,16 +1,52 @@
+import { ReactNode } from 'react'
 import { compileMDX } from 'next-mdx-remote/rsc'
+import { MarkDownFrontMatter } from '@/domain/markdown/schema/markdown'
+import { Badge } from '@/shared/ui/badge'
+import { formatDateToLocale } from '../format-date'
 import { options } from './options'
 import { H1HashButton } from './ui/h1-hash-button'
 import { H2HashButton } from './ui/h2-hash-button'
 import { H3HashButton } from './ui/h3-hash-button'
 
 export const customCompileMdx = async ({ sourse }: { sourse: string }) => {
-  const { content, frontmatter } = await compileMDX({
+  const {
+    content,
+    frontmatter
+  }: {
+    content: ReactNode
+    frontmatter: MarkDownFrontMatter
+  } = await compileMDX({
     source: sourse,
     options: options,
     components: {
       h1: ({ children, id }) => {
-        return <H1HashButton id={id!}>{children}</H1HashButton>
+        return (
+          <header className="mb-12 border-b pb-3">
+            <div className="text-sm text-muted-foreground">
+              {formatDateToLocale({
+                date: frontmatter.created_date,
+                format: 'dd/MM/yyyy'
+              })}
+            </div>
+            <H1HashButton id={id!} className="font-bold tracking-tight">
+              {children}
+            </H1HashButton>
+            {frontmatter.description && (
+              <p className="text-base text-muted-foreground">
+                {frontmatter.description}
+              </p>
+            )}
+            {frontmatter.tags.length > 0 && (
+              <div className="flex flex-wrap gap-2 pt-2">
+                {frontmatter.tags.map((tag) => (
+                  <Badge key={tag} variant="secondary">
+                    {tag}
+                  </Badge>
+                ))}
+              </div>
+            )}
+          </header>
+        )
       },
       h2: ({ children, id }) => {
         return <H2HashButton id={id!}>{children}</H2HashButton>

@@ -2,12 +2,15 @@
 
 import { Hash } from 'lucide-react'
 import { Button } from '@/shared/ui/button'
+import { cn } from '../../utils'
 
 export const H1HashButton = ({
+  className,
   id,
   children
 }: {
   id: string
+  className?: string
   children: React.ReactNode
 }) => {
   const handleScroll = () => {
@@ -33,7 +36,9 @@ export const H1HashButton = ({
       >
         <Hash className="size-5" strokeWidth={3} />
       </Button>
-      <h1 id={id}>{children}</h1>
+      <h1 className={cn(className)} id={id}>
+        {children}
+      </h1>
     </div>
   )
 }
