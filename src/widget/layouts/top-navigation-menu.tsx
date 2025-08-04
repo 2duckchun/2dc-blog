@@ -44,7 +44,11 @@ export const TopNavigationMenu = ({ className }: TopNavigationMenuProps) => {
       ))}
       <li className="ml-4 flex items-center justify-center">
         <SearchModal>
-          <Search size={24} role="button" className="cursor-pointer" />
+          <Search
+            size={24}
+            role="button"
+            className="cursor-pointer transition-all duration-300 hover:scale-110 active:scale-95"
+          />
         </SearchModal>
       </li>
     </ul>
@@ -68,7 +72,7 @@ const LinkComponent = ({
         href={path}
         target={newTab ? '_blank' : '_self'}
         className={cn(
-          'relative group flex justify-center items-center h-[40px] w-fit py-2 px-2 rounded-xl hover:bg-navy-100 hover:text-navy-700 transition-all',
+          'relative group hover:scale-105 active:scale-95 flex justify-center items-center h-[40px] w-fit py-2 px-2 rounded-xl hover:bg-navy-100/40 hover:text-navy-500/50 transition-all duration-300',
           currentPath === path && 'text-navy-700 bg-navy-200 '
         )}
       >
