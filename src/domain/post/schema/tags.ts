@@ -1,5 +1,5 @@
 import { TAB_LIST } from '@/shared/constants/tab-list'
-import { MarkDownFrontMatter } from '../domain/markdown/schema'
+import { MarkDownFrontMatter } from '../../markdown/schema/markdown'
 
 export type TagName = string
 

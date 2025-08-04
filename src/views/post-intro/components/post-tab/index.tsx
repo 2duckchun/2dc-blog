@@ -2,7 +2,7 @@
 
 import { cn } from '@/shared/lib/utils'
 import { Tab } from '@/shared/ui/tab'
-import { ContentTabValueType } from '@/types/tags'
+import { ContentTabValueType } from '@/domain/post/schema/tags'
 import { useMarkdownListContext } from '../../contexts/use-markdown-list-context'
 
 interface HomeTabProps {

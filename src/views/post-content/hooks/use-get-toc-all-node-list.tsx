@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { TocData } from '@/types/post'
+import { TocData } from '@/domain/post/schema/toc'
 
 export const useGetTocAllNodeList = (selector: string) => {
   const contentRef = useRef<HTMLDivElement>(null)

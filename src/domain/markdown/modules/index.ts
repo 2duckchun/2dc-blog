@@ -3,8 +3,8 @@ import fsPromise from 'fs/promises'
 import path from 'path'
 import { sync } from 'glob'
 import matter from 'gray-matter'
-import { MarkDownFrontMatter } from '@/domain/markdown/schema'
-import { TagsDetailPost } from '@/types/tags'
+import { MarkDownFrontMatter } from '@/domain/markdown/schema/markdown'
+import { TagsDetailPost } from '@/domain/post/schema/tags'
 
 export class MarkDownModule {
   private directoryPath: string

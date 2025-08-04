@@ -13,7 +13,7 @@ import { searchMarkdownFrontMatterInServerFile } from '@/domain/markdown/actions
 import { parseFilePath } from '@/shared/lib/path-helper'
 import { cn } from '@/shared/lib/utils'
 import { TagBadge } from '@/shared/ui/tag-badge'
-import { MarkDownFrontMatter } from '@/domain/markdown/schema'
+import { MarkDownFrontMatter } from '@/domain/markdown/schema/markdown'
 import { Button } from '../../shared/ui/button'
 import {
   Card,

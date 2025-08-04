@@ -3,7 +3,7 @@
 import { createContext, useContext, useState } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
 import { TAB_LIST } from '@/shared/constants/tab-list'
-import { ContentTabValueType, TagsDetailPost } from '@/types/tags'
+import { ContentTabValueType, TagsDetailPost } from '@/domain/post/schema/tags'
 
 interface MarkdownListContextType {
   markdownList: [string, TagsDetailPost][]
