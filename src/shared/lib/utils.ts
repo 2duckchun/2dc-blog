@@ -28,3 +28,11 @@ export const parsePathnameAndMapToTab = (
       return 'post'
   }
 }
+
+export const throttle = (func: (...args: any) => void, delay: number) => {
+  let timeout: NodeJS.Timeout
+  return (...args: any) => {
+    if (timeout) clearTimeout(timeout)
+    timeout = setTimeout(() => func(...args), delay)
+  }
+}
