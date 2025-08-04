@@ -12,13 +12,13 @@ import {
   CardDescription,
   CardHeader,
   CardTitle
-} from '../../shared/ui/card'
+} from '../../../../../shared/ui/card'
 
-interface PostCardProps extends HTMLAttributes<HTMLDivElement> {
+interface PostIntroCardProps extends HTMLAttributes<HTMLDivElement> {
   frontmatter: MarkDownFrontMatter
 }
 
-export const PostCard: FunctionComponent<PostCardProps> = ({
+export const PostIntroCard: FunctionComponent<PostIntroCardProps> = ({
   className,
   frontmatter,
   ...props

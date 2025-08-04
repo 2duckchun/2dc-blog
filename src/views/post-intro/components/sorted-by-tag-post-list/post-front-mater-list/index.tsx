@@ -1,7 +1,7 @@
 import { FunctionComponent, HTMLAttributes, Suspense } from 'react'
 import { cn } from '@/shared/lib/utils'
 import { MarkDownFrontMatter } from '@/types/matter'
-import { PostCard } from './post-card'
+import { PostIntroCard } from '../post-intro-card/post-intro-card'
 
 interface PostFrontMatterListProps extends HTMLAttributes<HTMLDivElement> {
   list: MarkDownFrontMatter[]
@@ -18,7 +18,7 @@ export const PostFrontMatterList: FunctionComponent<
       {list.map((item, index) => {
         return (
           <Suspense key={item.title}>
-            <PostCard frontmatter={item} />
+            <PostIntroCard frontmatter={item} />
           </Suspense>
         )
       })}

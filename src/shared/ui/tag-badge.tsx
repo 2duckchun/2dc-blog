@@ -9,7 +9,7 @@ import {
 } from 'react'
 import { useQueryParams } from '@/shared/hooks/use-query-params'
 import { cn } from '@/shared/lib/utils'
-import { scrollToTop } from '../lib/scroll-to-top'
+import { scrollToTop } from '../lib/scroll-helper'
 
 interface TagBadgeProps extends HTMLAttributes<HTMLDivElement> {
   title: string

@@ -25,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko" className={pretendard.variable}>
-      <body className="min-h-screen">
+      <body className="min-h-screen overflow-y-auto">
         <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
       </body>
     </html>

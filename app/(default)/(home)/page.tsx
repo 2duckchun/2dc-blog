@@ -1,7 +1,7 @@
 export const revalidate = 36000
 
-import PostView from '@/views/post'
+import PostIntroView from '@/views/post-intro'
 
 export default async function HomePage() {
-  return <PostView />
+  return <PostIntroView />
 }

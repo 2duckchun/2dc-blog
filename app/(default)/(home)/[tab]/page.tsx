@@ -1,7 +1,7 @@
 export const revalidate = 36000
 
 import { ContentTabValueType } from '@/types/tags'
-import PostView from '@/views/post'
+import PostIntroView from '@/views/post-intro'
 
 export default async function HomeView({
   params
@@ -10,5 +10,5 @@ export default async function HomeView({
 }) {
   const { tab } = await params
 
-  return <PostView tab={tab} />
+  return <PostIntroView tab={tab} />
 }

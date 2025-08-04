@@ -3,18 +3,19 @@
 import { Fragment, FunctionComponent, HTMLAttributes } from 'react'
 import { useQueryParams } from '@/shared/hooks/use-query-params'
 import { cn } from '@/shared/lib/utils'
-import { PostFrontMatterList } from '@/widget/post/post-front-matter-list'
+import { PostFrontMatterList } from '@/views/post-intro/components/sorted-by-tag-post-list/post-front-mater-list'
 import { useMarkdownListContext } from '../../contexts/use-markdown-list-context'
 
 interface TagSortedPostListProps extends HTMLAttributes<HTMLDivElement> {}
 
-export const TagSortedPostList: FunctionComponent<TagSortedPostListProps> = ({
+export const SortedByTagPostList: FunctionComponent<TagSortedPostListProps> = ({
   className,
   ...props
 }): JSX.Element => {
   const { markdownList } = useMarkdownListContext()
   const currentTag = useQueryParams().getQueryString('tag') ?? 'all'
-
+  console.log(markdownList)
+  console.log(currentTag)
   return (
     <section className={cn(className)} {...props}>
       <div className="m-auto flex w-full flex-col gap-3">
