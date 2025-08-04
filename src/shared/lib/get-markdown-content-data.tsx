@@ -1,5 +1,5 @@
-import { MarkDownModule } from '@/modules/mark-down-module'
-import { MarkDownFrontMatter } from '@/types/matter'
+import { MarkDownModule } from '@/domain/markdown/modules'
+import { MarkDownFrontMatter } from '@/domain/markdown/schema'
 import { customCompileMdx } from './mdx/custom-compile-mdx'
 
 export const getMarkdownContentData = async (

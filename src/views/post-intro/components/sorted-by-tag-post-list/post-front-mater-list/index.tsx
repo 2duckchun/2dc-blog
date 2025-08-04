@@ -1,6 +1,6 @@
 import { FunctionComponent, HTMLAttributes, Suspense } from 'react'
 import { cn } from '@/shared/lib/utils'
-import { MarkDownFrontMatter } from '@/types/matter'
+import { MarkDownFrontMatter } from '@/domain/markdown/schema'
 import { PostIntroCard } from '../post-intro-card/post-intro-card'
 
 interface PostFrontMatterListProps extends HTMLAttributes<HTMLDivElement> {

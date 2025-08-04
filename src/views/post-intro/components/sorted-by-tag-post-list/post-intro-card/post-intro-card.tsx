@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { parseFilePath } from '@/shared/lib/path-helper'
 import { cn } from '@/shared/lib/utils'
 import { TagBadge } from '@/shared/ui/tag-badge'
-import { MarkDownFrontMatter } from '@/types/matter'
+import { MarkDownFrontMatter } from '@/domain/markdown/schema'
 import {
   Card,
   CardContent,

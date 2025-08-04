@@ -9,11 +9,11 @@ import {
 } from 'react'
 import dayjs from 'dayjs'
 import Link from 'next/link'
-import { getSearchedFrontMatterTitle } from '@/api/search'
+import { searchMarkdownFrontMatterInServerFile } from '@/domain/markdown/actions/search-markdown-front-matter-in-server-file'
 import { parseFilePath } from '@/shared/lib/path-helper'
 import { cn } from '@/shared/lib/utils'
 import { TagBadge } from '@/shared/ui/tag-badge'
-import { MarkDownFrontMatter } from '@/types/matter'
+import { MarkDownFrontMatter } from '@/domain/markdown/schema'
 import { Button } from '../../shared/ui/button'
 import {
   Card,
@@ -52,7 +52,7 @@ export const SearchModal: FunctionComponent<SearchModalProps> = ({
   }
 
   const onDebounceHandler = async (value: string | number) => {
-    const data = await getSearchedFrontMatterTitle(String(value))
+    const data = await searchMarkdownFrontMatterInServerFile(String(value))
     setSearchedFrontMatter(data)
   }
 

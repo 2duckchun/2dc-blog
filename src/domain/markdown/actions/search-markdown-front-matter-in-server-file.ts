@@ -1,11 +1,13 @@
 'use server'
 
-import { MarkDownModule } from '@/modules/mark-down-module'
+import { MarkDownModule } from '@/domain/markdown/modules'
 
 const markdown = new MarkDownModule('')
 const frontMatterList = markdown.getFrontMatterList()
 
-export const getSearchedFrontMatterTitle = async (searchValue: string) => {
+export const searchMarkdownFrontMatterInServerFile = async (
+  searchValue: string
+) => {
   if (searchValue === '') return []
   // console.time()
   const searchedTitle = frontMatterList.filter((frontMatterList) => {

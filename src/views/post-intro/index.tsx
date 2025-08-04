@@ -1,4 +1,4 @@
-import { MarkDownModule } from '@/modules/mark-down-module'
+import { MarkDownModule } from '@/domain/markdown/modules'
 import { Separator } from '@/shared/ui/separator'
 import { ContentTabValueType } from '@/types/tags'
 import { PostTab } from './components/post-tab'
