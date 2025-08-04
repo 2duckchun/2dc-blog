@@ -22,15 +22,15 @@ export const customCompileMdx = async ({ sourse }: { sourse: string }) => {
       h1: ({ children, id }) => {
         return (
           <header className="mb-12 border-b pb-3">
-            <div className="text-sm text-muted-foreground">
+            <H1HashButton id={id!} className="font-bold tracking-tight">
+              {children}
+            </H1HashButton>
+            <div className="text-right text-sm text-muted-foreground">
               {formatDateToLocale({
                 date: frontmatter.created_date,
                 format: 'dd/MM/yyyy'
               })}
             </div>
-            <H1HashButton id={id!} className="font-bold tracking-tight">
-              {children}
-            </H1HashButton>
             {frontmatter.description && (
               <p className="text-base text-muted-foreground">
                 {frontmatter.description}
