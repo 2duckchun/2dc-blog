@@ -1,9 +1,9 @@
 'use client'
 
 import { useMemo } from 'react'
+import { TocData } from '@/domain/post/schema/toc'
 import { scrollToHeadingById } from '@/shared/lib/scroll-helper'
 import { cn } from '@/shared/lib/utils'
-import { TocData } from '@/domain/post/schema/toc'
 import { useTocHighlightByScroll } from '@/views/post-content/hooks/use-toc-highlight-by-scroll'
 
 interface ContentAsideTocListProps {
