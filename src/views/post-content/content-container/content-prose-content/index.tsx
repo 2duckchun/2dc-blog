@@ -10,7 +10,7 @@ export const ContentProseContent = forwardRef<
   ContentProseContentProps
 >(({ children, className, ...props }, ref) => {
   return (
-    <div ref={ref} className={cn('prose', className)} {...props}>
+    <div ref={ref} className={cn('prose mx-auto', className)} {...props}>
       {children}
     </div>
   )
