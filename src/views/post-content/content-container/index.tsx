@@ -11,7 +11,7 @@ interface PostContentContainerProps {
 export const PostContentContainer = ({
   children
 }: PostContentContainerProps) => {
-  const { contentRef, tocList } = useGetTocAllNodeList('h1, h2')
+  const { contentRef, tocList } = useGetTocAllNodeList('h1, h2, h3')
   return (
     <section className="grid grid-cols-1 gap-4 p-4 md:grid-cols-4">
       {/* 좌측 빈공간 - md 이상일 때만 보임 */}
