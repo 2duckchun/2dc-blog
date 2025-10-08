@@ -55,90 +55,29 @@ const getHeadingPositions = (tocList: TocItem[]): HeadingPosition[] => {
 const updateHighlightedId = (
   headings: HeadingPosition[],
   tocList: TocItem[],
-  setHighlightedId: (id: string | null) => void
+  setHighlightedId: (id: string | null) => void,
+  offset = 80 // 고정 헤더가 있으면 그 높이만큼 적당히 조정
 ) => {
   const viewportHeight = window.innerHeight
-  const scrollY = window.scrollY
-  const documentHeight = document.body.scrollHeight
+  const scrollY = window.pageYOffset ?? document.documentElement.scrollTop ?? 0
+  const docHeight =
+    document.documentElement.scrollHeight || document.body.scrollHeight
 
-  const isAtBottom = Math.abs(scrollY + viewportHeight - documentHeight) < 5
+  const isAtBottom = Math.abs(scrollY + viewportHeight - docHeight) < 5
   if (isAtBottom) {
     setHighlightedId(tocList.at(-1)?.id ?? null)
     return
   }
-  const visibleHeadings = headings.filter(({ top }) => top >= 0)
-  if (visibleHeadings.length > 0) {
-    setHighlightedId(visibleHeadings[0].id)
-  } else {
-    setHighlightedId(tocList[0]?.id ?? null)
+
+  // 1) 현재 스크롤 기준으로 "지나간" 헤딩들(top <= offset)
+  const passed = headings.filter(({ top }) => top <= offset)
+
+  if (passed.length > 0) {
+    // 가장 최근에 지나간 헤딩 = 마지막
+    setHighlightedId(passed[passed.length - 1].id)
+    return
   }
+
+  // 2) 아직 첫 헤딩 위라면 첫 번째
+  setHighlightedId(tocList[0]?.id ?? null)
 }
-
-// import { useEffect, useState } from 'react'
-
-// interface TocItem {
-//   id: string
-// }
-
-// export const useTocHighlightByScroll = (tocList: TocItem[]) => {
-//   const [highlightedId, setHighlightedId] = useState<string | null>(null)
-
-//   useEffect(() => {
-//     if (tocList.length === 0) return
-//     let ticking = false
-
-//     const handleScroll = () => {
-//       if (ticking) return
-//       ticking = true
-//       requestAnimationFrame(() => {
-//         const viewportHeight = window.innerHeight
-//         const scrollY = window.scrollY
-//         const documentHeight = document.body.scrollHeight
-//         const isAtBottom =
-//           Math.abs(scrollY + viewportHeight - documentHeight) < 5
-
-//         if (isAtBottom) {
-//           // 맨 아래 도달 → 마지막 항목 하이라이트
-//           setHighlightedId(tocList[tocList.length - 1]?.id ?? null)
-//           ticking = false
-//           return
-//         }
-
-//         // headings 위치 계산
-//         const headings = tocList
-//           .map(({ id }) => {
-//             const el = document.getElementById(id)
-//             if (!el) return null
-//             const rect = el.getBoundingClientRect()
-//             return { id, top: rect.top }
-//           })
-//           .filter(
-//             (entry): entry is { id: string; top: number } => entry !== null
-//           )
-//         // top >= 0인 heading 중 가장 위에 있는 것 선택
-//         const visibleHeadings = headings.filter(({ top }) => top >= 0)
-
-//         if (visibleHeadings.length > 0) {
-//           const target = visibleHeadings[0]
-//           setHighlightedId(target.id)
-//         } else {
-//           // 스크롤이 맨 위일 때 → 첫 번째 heading 하이라이트
-//           setHighlightedId(tocList[0]?.id ?? null)
-//         }
-
-//         ticking = false
-//       })
-//     }
-
-//     window.addEventListener('scroll', handleScroll, { passive: true })
-//     window.addEventListener('resize', handleScroll)
-//     handleScroll()
-
-//     return () => {
-//       window.removeEventListener('scroll', handleScroll)
-//       window.removeEventListener('resize', handleScroll)
-//     }
-//   }, [tocList])
-
-//   return { highlightedId }
-// }
